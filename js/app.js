@@ -68,23 +68,33 @@
   ];
 
   const CASES = [
-    ['Indian Post Office','Counter halls and cash areas across post office branches','GOVERNMENT · PAN-INDIA'],
-    ['Indian Army','Cantonment perimeter and parade ground surveillance','DEFENCE'],
-    ['Employees’ Provident Fund Organisation','Public-facing office floors and record archives','CENTRAL GOVERNMENT'],
-    ['Home Department, Chandigarh','Secretariat building coverage with controlled access','STATE GOVERNMENT'],
-    ['Finance Department, Uttar Pradesh','Multi-site rollout across departmental offices','STATE GOVERNMENT'],
-    ['Department of School Education & Literacy','Classroom and campus safety across school clusters','EDUCATION'],
-    ['Department of Agriculture, Cooperation & Farmers Welfare','Field station and storage yard monitoring','GOVERNMENT · AGRICULTURE'],
-    ['Niine — Shudh Plus Hygiene Products','Production line and dispatch area surveillance','MANUFACTURING'],
-    ['Residents’ Welfare Association','Township gates, common areas and parking with ANPR','RESIDENTIAL'],
-    ['Rural Development, Maharashtra','Dispersed rural sites linked over wireless backhaul','STATE GOVERNMENT'],
-    ['Institutional & corporate buildings','Entrance, lobby and floor-level coverage','CORPORATE'],
-    ['Installation standard','Neat cable dressing and mounting on every site we hand over','EXECUTION QUALITY']
+    ['Indian Post Office','Counter halls and cash areas across post office branches','GOVERNMENT · PAN-INDIA','case-indian-post-office.jpg'],
+    ['Indian Army','Cantonment perimeter and parade ground surveillance','DEFENCE','case-indian-army.jpg'],
+    ['Employees’ Provident Fund Organisation','Public-facing office floors and record archives','CENTRAL GOVERNMENT','case-epfo-bhavan.jpg'],
+    ['Home Department, Chandigarh','Secretariat building coverage with controlled access','STATE GOVERNMENT','case-home-department-chandigarh.jpg'],
+    ['Finance Department, Uttar Pradesh','Multi-site rollout across departmental offices','STATE GOVERNMENT','case-finance-department-uttar-pradesh.jpg'],
+    ['Department of School Education & Literacy','Classroom and campus safety across school clusters','EDUCATION','case-dept-school-education-literacy.jpg'],
+    ['Department of Agriculture, Cooperation & Farmers Welfare','Field station and storage yard monitoring','GOVERNMENT · AGRICULTURE','case-agriculture-department-field.jpg'],
+    ['Niine — Shudh Plus Hygiene Products','Production line and dispatch area surveillance','MANUFACTURING','case-niine-shudh-plus-hygiene-plant.jpg'],
+    ['Residents’ Welfare Association','Township gates, common areas and parking with ANPR','RESIDENTIAL','case-residents-welfare-association.jpg'],
+    ['Rural Development, Maharashtra','Dispersed rural sites linked over wireless backhaul','STATE GOVERNMENT','case-rural-development-maharashtra.jpg'],
+    ['Institutional & corporate buildings','Entrance, lobby and floor-level coverage','CORPORATE','case-defence-corporate-building.jpg'],
+    ['Installation standard','Neat cable dressing and mounting on every site we hand over','EXECUTION QUALITY','case-installation-standard-corporate-interior.jpg']
   ];
 
   const OEMS = ['CP PLUS','UNV','PRAMA','Honeywell','RoyalShield','Cisco','D Link','NETGEAR','DIGISOL','Grandstream',
     'Dell','HP','Lenovo','Samsung','ASUS','Acer','Lapcare','Portronics','Intex','Polycab',
     'Usha Martin','ERD','Uniway Infocom','BPE','Microtek','Okaya','Dynamic Rack','Soltrix','LG'];
+
+  // Maps a brand's display name to its real logo file under images/logos/oem/.
+  const OEM_LOGO_FILE = {
+    'CP PLUS':'oem-cp-plus.png', 'UNV':'oem-unv.png', 'PRAMA':'oem-prama.png', 'Honeywell':'oem-honeywell.png', 'RoyalShield':'oem-royalshield.png',
+    'Cisco':'oem-cisco.png', 'D Link':'oem-d-link.png', 'NETGEAR':'oem-netgear.png', 'DIGISOL':'oem-digisol.png', 'Grandstream':'oem-grandstream.png',
+    'Dell':'oem-dell.png', 'HP':'oem-hp.png', 'Lenovo':'oem-lenovo.png', 'Samsung':'oem-samsung.png', 'ASUS':'oem-asus.png', 'Acer':'oem-acer.png', 'LG':'oem-lg.png',
+    'Lapcare':'oem-lapcare.png', 'Portronics':'oem-portronics.png', 'Intex':'oem-intex.png',
+    'Polycab':'oem-polycab.png', 'Usha Martin':'oem-usha-martin.png', 'ERD':'oem-erd.png', 'BPE':'oem-bpe.png', 'Microtek':'oem-microtek.png', 'Okaya':'oem-okaya.png',
+    'Dynamic Rack':'oem-dynamic-rack.png', 'Soltrix':'oem-soltrix.png', 'Uniway Infocom':'oem-uniway-infocom.png'
+  };
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -227,6 +237,10 @@
   const dRelated = document.getElementById('detail-related');
 
   function logoTile(name) {
+    const file = OEM_LOGO_FILE[name];
+    if (file) {
+      return `<div class="logo-tile" style="height:62px"><img src="images/logos/oem/${file}" alt="${esc(name)}" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>`;
+    }
     return `<div class="logo-tile" style="height:62px" title="${esc(name)}"><span>${esc(name)}</span></div>`;
   }
 
@@ -266,9 +280,9 @@
   wireCapOpeners();
 
   // ---------------- Case studies grid ----------------
-  document.getElementById('cases-grid').innerHTML = CASES.map(([title, body, tag]) => `
+  document.getElementById('cases-grid').innerHTML = CASES.map(([title, body, tag, img]) => `
     <div class="lift-hover" style="border:1px solid #232327;border-radius:5px;overflow:hidden;background:#121214;display:flex;flex-direction:column">
-      <div class="photo-panel" style="height:150px"></div>
+      <div style="height:150px;overflow:hidden;background:#0B0B0D"><img src="images/case-studies/${img}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;filter:saturate(0.9) contrast(1.03)"></div>
       <div style="padding:16px 18px 18px;flex:1;display:flex;flex-direction:column">
         <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:16px;color:#F7F7F8;line-height:1.25;min-height:40px">${esc(title)}</div>
         <div style="font-size:14px;color:#B3B6BC;margin-top:6px;flex:1">${esc(body)}</div>
@@ -303,8 +317,7 @@
   renderProcess();
 
   // ---------------- OEM logo grid ----------------
-  document.getElementById('oem-grid').innerHTML = OEMS.map(name =>
-    `<div class="logo-tile" style="height:52px"><span style="font-size:11.5px">${esc(name)}</span></div>`).join('');
+  document.getElementById('oem-grid').innerHTML = OEMS.map((name) => logoTile(name).replace('height:62px', 'height:52px')).join('');
 
   // ---------------- Animated stat counters ----------------
   function animateCounters() {
