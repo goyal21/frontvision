@@ -1,0 +1,10 @@
+# Secrets — never commit
+github_pat_*.txt
+*.token
+.env
+.env.*
+
+# Misc local files
+code.txt
+Thumbs.db
+.DS_Store

@@ -1,0 +1,434 @@
+// Front Vision — site logic (intro splash, nav/routing, capability detail
+// rendering, process accordion, animated counters, quote wizard).
+(() => {
+  'use strict';
+
+  const CAPS = [
+    { slug:'surveillance', num:'01', name:'Surveillance & Security', short:'CCTV, ANPR, access control, firewalls & UTM',
+      headline:'Surveillance and security, end to end.',
+      blurb:'From camera placement surveys to phase-wise rollout, with network security and access control built into the same scope — 3,000+ camera deployments delivered across border security, PSU campuses and manufacturing plants.',
+      brands:['CP PLUS','Honeywell','PRAMA','UNV','RoyalShield'],
+      items:[
+        {n:'1',t:'End-to-End Design',d:'Camera placement surveys, coverage planning and NVR/VMS sizing.'},
+        {n:'2',t:'IP Camera Networks',d:'Fixed, PTZ and thermal cameras integrated with recording and monitoring.'},
+        {n:'3',t:'ANPR / GateGuard',d:'Vehicle recognition for gates, parking and porte-cochere areas.'},
+        {n:'4',t:'Firewalls, UTM & Secure Access',d:'Threat-protection appliances, VPN and multi-factor access safeguarding the network the cameras run on.'},
+        {n:'5',t:'Access Control & Attendance',d:'Card, biometric and facial-recognition access control integrated with attendance systems.'},
+        {n:'6',t:'BOQ-Driven Execution',d:'Clear quantity schedules and phase-wise rollout across large sites.'}]},
+    { slug:'networking', num:'02', name:'Networking Equipment', short:'Routers, switches, wireless & network security',
+      headline:'Networks built for uptime.',
+      blurb:'Connectivity that keeps offices, campuses and remote sites online — from single-office LANs to multi-site enterprise networks.',
+      brands:['Cisco','D Link','NETGEAR','DIGISOL','Grandstream'],
+      items:[
+        {n:'1',t:'Routers & Switches',d:'Basic models for small offices through advanced configurations for large enterprises — reliable connectivity, improved network performance.'},
+        {n:'2',t:'Wireless Access Points',d:'Enterprise Wi-Fi and mesh networking for strong, stable wireless coverage across every floor and site.'},
+        {n:'3',t:'Network Security Devices',d:'Firewalls, VPN solutions and other security appliances protecting data and network integrity.'}]},
+    { slug:'servers', num:'03', name:'Servers & Storage', short:'Rack, tower & blade servers, NAS/SAN',
+      headline:'Compute & storage that scales.',
+      blurb:'Reliable infrastructure for data storage, processing and enterprise applications — sized to your workload today and your growth tomorrow.',
+      brands:['Dell','HP','Lenovo','Samsung'],
+      items:[
+        {n:'1',t:'Servers',d:'Tower, rack and blade servers from leading OEMs — essential for data storage, processing and enterprise applications.'},
+        {n:'2',t:'Storage Arrays',d:'NAS, SAN and hybrid cloud-ready storage solutions ensuring data integrity and easy access.'},
+        {n:'3',t:'Configured to Workload',d:'Pre-configured or fully customisable systems matched to capacity and performance requirements.'}]},
+    { slug:'endpoints', num:'04', name:'Desktops, Laptops & Workstations', short:'OEM fleets plus custom gaming & design builds',
+      headline:'Every desk, specified right.',
+      blurb:'OEM desktops and laptops for the workforce, and purpose-built machines where off-the-shelf will not do — gaming rigs and design workstations assembled, tested and warranted in-house.',
+      brands:['Dell','HP','Lenovo','ASUS','Acer','Lapcare','Portronics','Intex'],
+      items:[
+        {n:'1',t:'OEM Desktops & Laptops',d:'Business-grade machines from the OEMs we already supply — quoted, imaged and delivered to site with GST billing.'},
+        {n:'2',t:'Custom Gaming Systems',d:'Built to a target frame rate and budget — GPU, cooling and PSU headroom sized to the games, not the marketing.'},
+        {n:'3',t:'Design & Content Workstations',d:'CAD, 3D, editing and rendering builds — colour-accurate displays, ECC or high-capacity memory, calibrated for the software in use.'},
+        {n:'4',t:'Fleet Rollout & Support',d:'Standard-image deployment, asset tagging, warranty handling and AMC across the installed base.'}]},
+    { slug:'cabling', num:'05', name:'Structured Cabling & ELV', short:'CAT6/6A, Fiber, ELV & IoT pathways',
+      headline:'Cabling done right, the first time.',
+      blurb:'Cabling infrastructure planned to avoid rework once finishes, ceilings and joinery are in place — coordinated directly with MEP and interior contractors on-site.',
+      brands:['Polycab','Usha Martin','ERD','Uniway Infocom','D Link'],
+      items:[
+        {n:'1',t:'Data & Network Cabling',d:'Structured CAT6 / CAT6A / Fiber cabling, patch panels and connectors for guest, corporate and back-of-house networks.'},
+        {n:'2',t:'ELV Systems',d:'Extra-low-voltage infrastructure — PA/GDA, BMS wiring and access-control backbones.'},
+        {n:'3',t:'IoT & Sensor Integration',d:'Cabling pathways designed for current and future IoT deployments — sensors, controllers, gateways.'}]},
+    { slug:'datacenter', num:'06', name:'Data Center & Power', short:'Racks, cooling, UPS & PDU',
+      headline:'The backbone behind every deployment.',
+      blurb:'A well-equipped data center ensures smooth, uninterrupted operations for the enterprise it supports.',
+      brands:['BPE','Microtek','Okaya','Dynamic Rack','Soltrix','LG'],
+      items:[
+        {n:'1',t:'Rack Solutions',d:'Sturdy, customisable racks and enclosures supporting hardware management and organisation.'},
+        {n:'2',t:'Cooling Solutions',d:'Precision cooling systems, cooling racks and air conditioning for peak data center efficiency.'},
+        {n:'3',t:'Power Backup Systems',d:'UPS systems and PDUs safeguarding against power failures and downtime, with environment monitoring.'}]}
+  ];
+
+  const STEPS = [
+    ['01','Requirement Discovery','Stakeholder consultation, device counts, budget, timelines and site audit.'],
+    ['02','Solution Design & BOQ','Detailed bill of quantities mapped to product families and technical specs.'],
+    ['03','Procurement & Staging','Certified OEM sourcing, pre-configuration and quality validation in-lab.'],
+    ['04','Installation & Integration','On-site mounting, cabling, power integration and system commissioning.'],
+    ['05','Testing & Handover','Acceptance tests, documentation and formal client sign-off.'],
+    ['06','AMC & Lifecycle Support','Warranty management, health checks and ongoing maintenance.']
+  ];
+
+  const CASES = [
+    ['Indian Post Office','Counter halls and cash areas across post office branches','GOVERNMENT · PAN-INDIA'],
+    ['Indian Army','Cantonment perimeter and parade ground surveillance','DEFENCE'],
+    ['Employees’ Provident Fund Organisation','Public-facing office floors and record archives','CENTRAL GOVERNMENT'],
+    ['Home Department, Chandigarh','Secretariat building coverage with controlled access','STATE GOVERNMENT'],
+    ['Finance Department, Uttar Pradesh','Multi-site rollout across departmental offices','STATE GOVERNMENT'],
+    ['Department of School Education & Literacy','Classroom and campus safety across school clusters','EDUCATION'],
+    ['Department of Agriculture, Cooperation & Farmers Welfare','Field station and storage yard monitoring','GOVERNMENT · AGRICULTURE'],
+    ['Niine — Shudh Plus Hygiene Products','Production line and dispatch area surveillance','MANUFACTURING'],
+    ['Residents’ Welfare Association','Township gates, common areas and parking with ANPR','RESIDENTIAL'],
+    ['Rural Development, Maharashtra','Dispersed rural sites linked over wireless backhaul','STATE GOVERNMENT'],
+    ['Institutional & corporate buildings','Entrance, lobby and floor-level coverage','CORPORATE'],
+    ['Installation standard','Neat cable dressing and mounting on every site we hand over','EXECUTION QUALITY']
+  ];
+
+  const OEMS = ['CP PLUS','UNV','PRAMA','Honeywell','RoyalShield','Cisco','D Link','NETGEAR','DIGISOL','Grandstream',
+    'Dell','HP','Lenovo','Samsung','ASUS','Acer','Lapcare','Portronics','Intex','Polycab',
+    'Usha Martin','ERD','Uniway Infocom','BPE','Microtek','Okaya','Dynamic Rack','Soltrix','LG'];
+
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  // ---------------- Accessibility helpers ----------------
+  // Many interactive elements in this design are <div>s (matching the source
+  // template), not native <button>/<a> — enhance them with keyboard support
+  // (tabindex, role, Enter/Space activation) so they're WCAG 2.1.1 compliant.
+  function enhanceClickable(el, role) {
+    if (el.__a11y) return;
+    el.__a11y = true;
+    if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+    if (!el.hasAttribute('role')) el.setAttribute('role', role || 'button');
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        el.click();
+      }
+    });
+  }
+  function enhanceAll(root) {
+    (root || document).querySelectorAll('.nav-go, .cap-open, .dropdown-item, .related-chip, .chip, #logo-home, #quote-back, #quote-next, #quote-reset').forEach((el) => enhanceClickable(el));
+  }
+
+  // ---------------- Intro splash ----------------
+  const introStage = document.getElementById('intro-stage');
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let introTimers = [];
+  function setIntro(state) {
+    introStage.setAttribute('data-intro', state);
+    if (state === 'done') {
+      // No longer an active overlay — drop the dialog semantics so
+      // screen readers don't announce inert, off-screen content.
+      introStage.removeAttribute('role');
+      introStage.removeAttribute('aria-label');
+    }
+  }
+  function skipIntro() {
+    if (introStage.getAttribute('data-intro') === 'done') return;
+    introTimers.forEach(clearTimeout);
+    setIntro('zoom');
+    introTimers = [setTimeout(() => setIntro('done'), 2900)];
+  }
+  if (reducedMotion) {
+    // Respect the OS-level motion preference: skip the zoom choreography
+    // entirely instead of just speeding it up (CSS already collapses the
+    // transition durations; this avoids the multi-second wait too).
+    setIntro('done');
+  } else {
+    introStage.addEventListener('click', (e) => { if (e.target.id !== 'skip-intro-btn') skipIntro(); });
+    document.getElementById('skip-intro-btn').addEventListener('click', (e) => { e.stopPropagation(); skipIntro(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') skipIntro(); });
+    introTimers.push(setTimeout(() => setIntro('zoom'), 2200));
+    introTimers.push(setTimeout(() => setIntro('done'), 5100));
+  }
+
+  // ---------------- Header / nav ----------------
+  const navCapsToggle = document.getElementById('nav-caps-toggle');
+  const navCapsPanel = document.getElementById('nav-caps-panel');
+  const navCapsList = document.getElementById('nav-caps-list');
+  const footerCapsList = document.getElementById('footer-caps-list');
+  const homeView = document.getElementById('home-view');
+  const detailView = document.getElementById('detail-view');
+
+  navCapsList.innerHTML = CAPS.map(c => `
+    <div class="dropdown-item cap-open" data-slug="${c.slug}" style="cursor:pointer;padding:14px 16px;border-radius:4px;border:1px solid transparent">
+      <div style="display:flex;gap:10px;align-items:baseline">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#EC4453">${c.num}</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:16px;color:#F7F7F8">${esc(c.name)}</span>
+      </div>
+      <div style="font-size:13.5px;color:#8C8C94;margin-top:4px;padding-left:26px">${esc(c.short)}</div>
+    </div>`).join('');
+
+  footerCapsList.innerHTML = CAPS.map(c =>
+    `<span class="cap-open hv-lighten" data-slug="${c.slug}" style="cursor:pointer;color:#B3B6BC">${esc(c.name)}</span>`).join('');
+  enhanceAll(navCapsList);
+  enhanceAll(footerCapsList);
+
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  function setMenuOpen(open) {
+    navCapsPanel.hidden = !open;
+    navCapsToggle.setAttribute('aria-expanded', String(open));
+    mobileBtn.setAttribute('aria-expanded', String(open));
+  }
+  function closeMenu() { setMenuOpen(false); }
+  navCapsToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMenuOpen(navCapsPanel.hidden);
+  });
+  document.addEventListener('click', (e) => {
+    if (!navCapsPanel.hidden && !navCapsPanel.contains(e.target) && e.target !== navCapsToggle && !navCapsToggle.contains(e.target)) closeMenu();
+  });
+
+  mobileBtn.addEventListener('click', (e) => { e.stopPropagation(); setMenuOpen(navCapsPanel.hidden); });
+
+  function scrollToId(id) {
+    const el = document.getElementById(id);
+    if (!el) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  function showHome() {
+    detailView.hidden = true;
+    homeView.hidden = false;
+  }
+  function showDetail() {
+    homeView.hidden = true;
+    detailView.hidden = false;
+  }
+
+  function go(targetId) {
+    closeMenu();
+    // The quote form renders outside both the home and detail views (it's
+    // always in the DOM), so jumping to it should never force a view switch.
+    if (targetId === 'quote') { scrollToId('quote'); return; }
+    const wasDetail = !detailView.hidden;
+    if (wasDetail) {
+      showHome();
+      window.scrollTo({ top: 0 });
+      if (targetId) setTimeout(() => scrollToId(targetId), 60);
+      return;
+    }
+    if (targetId) scrollToId(targetId);
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('.nav-go').forEach(el => {
+    el.addEventListener('click', () => go(el.getAttribute('data-go')));
+  });
+  document.getElementById('logo-home').addEventListener('click', () => go(''));
+
+  // ---------------- Capability detail ----------------
+  const dCrumb = document.getElementById('detail-crumb');
+  const dNum = document.getElementById('detail-num');
+  const dHeadline = document.getElementById('detail-headline');
+  const dBlurb = document.getElementById('detail-blurb');
+  const dItems = document.getElementById('detail-items');
+  const dBrandsWrap = document.getElementById('detail-brands-wrap');
+  const dLogos = document.getElementById('detail-logos');
+  const dRelated = document.getElementById('detail-related');
+
+  function logoTile(name) {
+    return `<div class="logo-tile" style="height:62px" title="${esc(name)}"><span>${esc(name)}</span></div>`;
+  }
+
+  function openCap(slug) {
+    const cap = CAPS.find(c => c.slug === slug) || CAPS[0];
+    dCrumb.textContent = cap.name.toUpperCase();
+    dNum.textContent = cap.num;
+    dHeadline.textContent = cap.headline;
+    dBlurb.textContent = cap.blurb;
+    dItems.innerHTML = cap.items.map(it => `
+      <div style="background:#121214;border:1px solid #232327;border-radius:5px;padding:24px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#EC4453;margin-bottom:8px">${esc(it.n)}</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;color:#F7F7F8;margin-bottom:8px">${esc(it.t)}</div>
+        <div style="font-size:15.5px;color:#B3B6BC">${esc(it.d)}</div>
+      </div>`).join('');
+    if (cap.brands && cap.brands.length) {
+      dBrandsWrap.style.display = '';
+      dLogos.innerHTML = cap.brands.map(logoTile).join('');
+    } else {
+      dBrandsWrap.style.display = 'none';
+    }
+    dRelated.innerHTML = CAPS.filter(c => c.slug !== cap.slug).slice(0, 3).map(c =>
+      `<div class="cap-open related-chip" data-slug="${c.slug}" style="cursor:pointer;border:1px solid #232327;border-radius:20px;padding:8px 16px;font-size:14px;color:#F7F7F8;background:#121214">${esc(c.name)}</div>`).join('');
+    showDetail();
+    wireCapOpeners();
+    window.scrollTo({ top: 0 });
+  }
+
+  function wireCapOpeners() {
+    document.querySelectorAll('.cap-open').forEach(el => {
+      if (el.__wired) return;
+      el.__wired = true;
+      el.addEventListener('click', () => openCap(el.getAttribute('data-slug')));
+    });
+    enhanceAll();
+  }
+  wireCapOpeners();
+
+  // ---------------- Case studies grid ----------------
+  document.getElementById('cases-grid').innerHTML = CASES.map(([title, body, tag]) => `
+    <div class="lift-hover" style="border:1px solid #232327;border-radius:5px;overflow:hidden;background:#121214;display:flex;flex-direction:column">
+      <div class="photo-panel" style="height:150px"></div>
+      <div style="padding:16px 18px 18px;flex:1;display:flex;flex-direction:column">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:16px;color:#F7F7F8;line-height:1.25;min-height:40px">${esc(title)}</div>
+        <div style="font-size:14px;color:#B3B6BC;margin-top:6px;flex:1">${esc(body)}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8C8C94;letter-spacing:0.08em;margin-top:14px;padding-top:10px;border-top:1px solid #232327">${esc(tag)}</div>
+      </div>
+    </div>`).join('');
+
+  // ---------------- Process accordion ----------------
+  const processList = document.getElementById('process-list');
+  let openStep = -1;
+  function renderProcess() {
+    processList.innerHTML = STEPS.map(([num, title, body], i) => `
+      <div class="row-hover process-row" data-i="${i}" role="button" tabindex="0" aria-expanded="${openStep === i}" style="cursor:pointer;border-bottom:1px solid #232327;padding:18px 24px">
+        <div style="display:grid;grid-template-columns:44px 1fr 24px;align-items:center;gap:14px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#EC4453">${num}</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:19px;color:#F7F7F8">${esc(title)}</span>
+          <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;font-size:15px;color:#8C8C94;text-align:right">${openStep === i ? '−' : '+'}</span>
+        </div>
+        ${openStep === i ? `<div style="padding:12px 0 4px 58px;font-size:15.5px;color:#B3B6BC;max-width:760px">${esc(body)}</div>` : ''}
+      </div>`).join('');
+    processList.querySelectorAll('.process-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const i = Number(row.getAttribute('data-i'));
+        openStep = openStep === i ? -1 : i;
+        renderProcess();
+      });
+      row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); row.click(); }
+      });
+    });
+  }
+  renderProcess();
+
+  // ---------------- OEM logo grid ----------------
+  document.getElementById('oem-grid').innerHTML = OEMS.map(name =>
+    `<div class="logo-tile" style="height:52px"><span style="font-size:11.5px">${esc(name)}</span></div>`).join('');
+
+  // ---------------- Animated stat counters ----------------
+  function animateCounters() {
+    const targets = { c1: 30, c2: 3000, c3: 18 };
+    const els = { c1: document.getElementById('stat-c1'), c2: document.getElementById('stat-c2'), c3: document.getElementById('stat-c3') };
+    const t0 = Date.now(), dur = 1200;
+    function tick() {
+      const p = Math.min(1, (Date.now() - t0) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      els.c1.textContent = Math.round(targets.c1 * e) + '+';
+      els.c2.textContent = Math.round(targets.c2 * e).toLocaleString('en-IN') + '+';
+      els.c3.textContent = Math.round(targets.c3 * e) + '+';
+      if (p < 1) setTimeout(tick, 32);
+    }
+    setTimeout(tick, 120);
+  }
+  animateCounters();
+
+  // ---------------- Quote wizard ----------------
+  const quoteState = {
+    step: 1, needs: [], submitted: false, ref: '', error: '',
+    form: { boq: 'Not yet — need help scoping', site: 'Corporate office', scale: 'Whole building', timeline: 'This quarter', location: '', notes: '', name: '', company: '', phone: '', email: '' }
+  };
+  const titles = { 1: 'What do you need?', 2: 'Project details', 3: 'Where do we send it?' };
+  const labels = { 1: 'Continue', 2: 'Continue', 3: 'Send enquiry' };
+
+  const qProgress = document.getElementById('quote-progress');
+  const qStepTitle = document.getElementById('quote-step-title');
+  const qStepNum = document.getElementById('quote-step-num');
+  const qChips = document.getElementById('quote-chips');
+  const qStep1 = document.getElementById('quote-step-1');
+  const qStep2 = document.getElementById('quote-step-2');
+  const qStep3 = document.getElementById('quote-step-3');
+  const qError = document.getElementById('quote-error');
+  const qBack = document.getElementById('quote-back');
+  const qNext = document.getElementById('quote-next');
+  const qNoCost = document.getElementById('quote-nocost');
+  const qFormWrap = document.getElementById('quote-form-wrap');
+  const qDone = document.getElementById('quote-done');
+  const qSummary = document.getElementById('quote-summary');
+
+  const fields = ['boq', 'site', 'scale', 'timeline', 'location', 'notes', 'name', 'company', 'phone', 'email'];
+  fields.forEach(k => {
+    const el = document.getElementById('f-' + k);
+    el.value = quoteState.form[k];
+    el.addEventListener('input', () => { quoteState.form[k] = el.value; quoteState.error = ''; renderQuote(); });
+    el.addEventListener('change', () => { quoteState.form[k] = el.value; quoteState.error = ''; renderQuote(); });
+  });
+
+  function renderChips() {
+    qChips.innerHTML = CAPS.map(c => {
+      const on = quoteState.needs.indexOf(c.name) > -1;
+      return on
+        ? `<div class="chip" data-name="${esc(c.name)}" role="checkbox" aria-checked="true" tabindex="0" style="cursor:pointer;border:1.5px solid #E62E3E;background:rgba(230,46,62,0.16);color:#F7F7F8;border-radius:22px;padding:9px 17px;font-size:14.5px;font-weight:500;display:flex;gap:8px;align-items:center"><span aria-hidden="true" style="color:#EC4453">✓</span>${esc(c.name)}</div>`
+        : `<div class="chip chip-off" data-name="${esc(c.name)}" role="checkbox" aria-checked="false" tabindex="0" style="cursor:pointer;border:1.5px solid #232327;background:#121214;color:#B3B6BC;border-radius:22px;padding:9px 17px;font-size:14.5px">${esc(c.name)}</div>`;
+    }).join('');
+    qChips.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const name = chip.getAttribute('data-name');
+        const i = quoteState.needs.indexOf(name);
+        if (i > -1) quoteState.needs.splice(i, 1); else quoteState.needs.push(name);
+        quoteState.error = '';
+        renderQuote();
+      });
+      chip.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); chip.click(); }
+      });
+    });
+  }
+
+  function needsList() { return quoteState.needs.length ? quoteState.needs.join(', ') : 'Not selected'; }
+
+  function renderQuote() {
+    if (quoteState.submitted) {
+      qFormWrap.style.display = 'none';
+      qDone.style.display = '';
+      qProgress.style.width = '100%';
+      document.getElementById('quote-ref').textContent = quoteState.ref;
+      document.getElementById('quote-done-scope').textContent = needsList();
+      document.getElementById('quote-done-site').textContent = quoteState.form.site;
+      document.getElementById('quote-done-timeline').textContent = quoteState.form.timeline;
+      return;
+    }
+    qFormWrap.style.display = '';
+    qDone.style.display = 'none';
+    qProgress.style.width = (quoteState.step * 33.3) + '%';
+    qStepTitle.textContent = titles[quoteState.step];
+    qStepNum.textContent = quoteState.step;
+    qNext.textContent = labels[quoteState.step];
+    qStep1.style.display = quoteState.step === 1 ? '' : 'none';
+    qStep2.style.display = quoteState.step === 2 ? 'grid' : 'none';
+    qStep3.style.display = quoteState.step === 3 ? 'grid' : 'none';
+    qBack.style.display = quoteState.step > 1 ? '' : 'none';
+    qNoCost.style.display = quoteState.step === 1 ? '' : 'none';
+    if (quoteState.step === 1) renderChips();
+    if (quoteState.step === 3) qSummary.textContent = needsList() + ' · ' + quoteState.form.site + ' · ' + quoteState.form.scale + ' · ' + quoteState.form.timeline;
+    if (quoteState.error) { qError.style.display = ''; qError.textContent = quoteState.error; }
+    else { qError.style.display = 'none'; }
+  }
+
+  qBack.addEventListener('click', () => { quoteState.step -= 1; quoteState.error = ''; renderQuote(); });
+
+  qNext.addEventListener('click', () => {
+    const s = quoteState, f = s.form;
+    if (s.step === 1) {
+      if (!s.needs.length) { s.error = 'Select at least one area of scope so we can route your enquiry.'; return renderQuote(); }
+      s.step = 2; s.error = ''; return renderQuote();
+    }
+    if (s.step === 2) {
+      if (!f.location.trim()) { s.error = 'Add a city or site location.'; return renderQuote(); }
+      s.step = 3; s.error = ''; return renderQuote();
+    }
+    if (!f.name.trim() || !f.company.trim()) { s.error = 'Name and company are both required.'; return renderQuote(); }
+    if (!/^[0-9+\-\s]{10,15}$/.test(f.phone.trim())) { s.error = 'Enter a valid phone number (10 digits).'; return renderQuote(); }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.trim())) { s.error = 'Enter a valid work email address.'; return renderQuote(); }
+    s.submitted = true; s.error = ''; s.ref = 'FV-2026-' + Math.floor(1000 + Math.random() * 9000);
+    renderQuote();
+  });
+
+  document.getElementById('quote-reset').addEventListener('click', () => {
+    quoteState.submitted = false; quoteState.step = 1; quoteState.needs = []; quoteState.error = '';
+    ['name', 'company', 'phone', 'email', 'notes'].forEach(k => { quoteState.form[k] = ''; document.getElementById('f-' + k).value = ''; });
+    renderQuote();
+  });
+
+  renderQuote();
+})();
