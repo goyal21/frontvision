@@ -59,27 +59,27 @@
   ];
 
   const STEPS = [
-    ['01','Requirement Discovery','REQUIREMENT DISCOVERY',[
+    ['01','Requirement Discovery','01_Requirement_Discovery.png',[
       'We understand your needs, infrastructure and business goals.',
       'Site audit covering device counts, budget and timelines.',
       'Stakeholder consultation to scope the right solution.']],
-    ['02','Solution Design & BOQ','SOLUTION DESIGN & BOQ',[
+    ['02','Solution Design & BOQ','02_Solution_Design_BOQ.png',[
       'Tailored solution design mapped to your environment.',
       'Detailed bill of quantities with technical specifications.',
       'Sized for performance, scalability and cost-efficiency.']],
-    ['03','Procurement & Staging','PROCUREMENT & STAGING',[
+    ['03','Procurement & Staging','03_Procurement_Staging.png',[
       'Certified OEM sourcing across 50+ trusted brands.',
       'Pre-configuration and quality validation in-lab.',
       'Inventory verification before dispatch to site.']],
-    ['04','Installation & Integration','INSTALLATION & INTEGRATION',[
+    ['04','Installation & Integration','04_Installation_Integration.png',[
       'On-site mounting for CCTV, networking and IT systems.',
       'Cabling, power integration and system configuration.',
       'Coordinated phase-wise rollout across sites.']],
-    ['05','Testing & Handover','TESTING & HANDOVER',[
+    ['05','Testing & Handover','05_Testing_Handover.png',[
       'Thorough testing of every system and device.',
       'Acceptance tests for performance, security and reliability.',
       'Handover with full documentation and user training.']],
-    ['06','AMC & Lifecycle Support','AMC & LIFECYCLE SUPPORT',[
+    ['06','AMC & Lifecycle Support','06_AMC_Lifecycle_Support.png',[
       'Preventive maintenance and rapid issue resolution.',
       'Defined SLAs and responsive support coverage.',
       'Ongoing monitoring for uptime and longer system life.']]
@@ -258,7 +258,7 @@
   // ---------------- Process accordion ----------------
   const processList = document.getElementById('process-list');
   function renderProcess() {
-    processList.innerHTML = STEPS.map(([num, title, tag, bullets], i) => `
+    processList.innerHTML = STEPS.map(([num, title, img, bullets], i) => `
       <div class="split-2" style="display:grid;grid-template-columns:0.95fr 1.05fr;gap:40px;align-items:center;padding:36px 0;${i > 0 ? 'border-top:1px solid #232327;' : ''}">
         <div>
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
@@ -276,7 +276,7 @@
             </div>`).join('')}
           </div>
         </div>
-        <div class="photo-panel" style="height:220px;border-radius:6px"><div class="photo-panel-tag">${esc(tag)}</div></div>
+        <div style="height:220px;border-radius:6px;overflow:hidden;background:#0B0B0D"><img src="images/product/${img}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
       </div>`).join('');
   }
   renderProcess();
