@@ -255,28 +255,15 @@
       </div>
     </div>`).join('');
 
-  // ---------------- Process accordion ----------------
+  // ---------------- Process steps ----------------
+  // The step images already have the number, title and checklist baked in
+  // (see images/product/*.png), so this only renders the images themselves
+  // — a parallel HTML title/bullet block would just repeat the same text.
   const processList = document.getElementById('process-list');
   function renderProcess() {
-    processList.innerHTML = STEPS.map(([num, title, img, bullets], i) => `
-      <div class="split-2" style="display:grid;grid-template-columns:0.95fr 1.05fr;gap:40px;align-items:center;padding:36px 0;${i > 0 ? 'border-top:1px solid #232327;' : ''}">
-        <div>
-          <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
-            <div style="width:52px;height:52px;border-radius:6px;background:#E62E3E;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;color:#F7F7F8;flex-shrink:0">${num}</div>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;letter-spacing:-0.01em;color:#F7F7F8;line-height:1.2">${esc(title)}</div>
-              <div style="width:36px;height:2px;background:#E62E3E;margin-top:8px"></div>
-            </div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            ${bullets.map((b) => `
-            <div style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start">
-              <span style="color:#EC4453;font-weight:700;line-height:1.5">✓</span>
-              <span style="font-size:15px;color:#B3B6BC;line-height:1.55">${esc(b)}</span>
-            </div>`).join('')}
-          </div>
-        </div>
-        <div style="height:220px;border-radius:6px;overflow:hidden;background:#0B0B0D"><img src="images/product/${img}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+    processList.innerHTML = STEPS.map(([num, title, img]) => `
+      <div class="card-hover" style="border:1px solid #232327;border-radius:6px;overflow:hidden;background:#fff;height:180px">
+        <img src="images/product/${img}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;display:block">
       </div>`).join('');
   }
   renderProcess();
