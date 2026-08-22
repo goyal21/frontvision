@@ -59,27 +59,27 @@
   ];
 
   const STEPS = [
-    ['01','Requirement Discovery','01_Requirement_Discovery.png',[
+    ['01','Requirement Discovery','01_Requirement_Discovery.jpg',[
       'We understand your needs, infrastructure and business goals.',
       'Site audit covering device counts, budget and timelines.',
       'Stakeholder consultation to scope the right solution.']],
-    ['02','Solution Design & BOQ','02_Solution_Design_BOQ.png',[
+    ['02','Solution Design & BOQ','02_Solution_Design_BOQ.jpg',[
       'Tailored solution design mapped to your environment.',
       'Detailed bill of quantities with technical specifications.',
       'Sized for performance, scalability and cost-efficiency.']],
-    ['03','Procurement & Staging','03_Procurement_Staging.png',[
+    ['03','Procurement & Staging','03_Procurement_Staging.jpg',[
       'Certified OEM sourcing across 50+ trusted brands.',
       'Pre-configuration and quality validation in-lab.',
       'Inventory verification before dispatch to site.']],
-    ['04','Installation & Integration','04_Installation_Integration.png',[
+    ['04','Installation & Integration','04_Installation_Integration.jpg',[
       'On-site mounting for CCTV, networking and IT systems.',
       'Cabling, power integration and system configuration.',
       'Coordinated phase-wise rollout across sites.']],
-    ['05','Testing & Handover','05_Testing_Handover.png',[
+    ['05','Testing & Handover','05_Testing_Handover.jpg',[
       'Thorough testing of every system and device.',
       'Acceptance tests for performance, security and reliability.',
       'Handover with full documentation and user training.']],
-    ['06','AMC & Lifecycle Support','06_AMC_Lifecycle_Support.png',[
+    ['06','AMC & Lifecycle Support','06_AMC_Lifecycle_Support.jpg',[
       'Preventive maintenance and rapid issue resolution.',
       'Defined SLAs and responsive support coverage.',
       'Ongoing monitoring for uptime and longer system life.']]
