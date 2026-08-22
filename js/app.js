@@ -18,7 +18,7 @@
     { slug:'networking', url:'capabilities/networking-equipment.html', num:'02', name:'Networking Equipment', short:'Routers, switches, wireless & network security',
       headline:'Networks built for uptime.',
       blurb:'Connectivity that keeps offices, campuses and remote sites online — from single-office LANs to multi-site enterprise networks.',
-      brands:['Cisco','D Link','NETGEAR','DIGISOL'],
+      brands:['Cisco','D Link','NETGEAR','DIGISOL','Grandstream'],
       items:[
         {n:'1',t:'Routers & Switches',d:'Basic models for small offices through advanced configurations for large enterprises — reliable connectivity, improved network performance.'},
         {n:'2',t:'Wireless Access Points',d:'Enterprise Wi-Fi and mesh networking for strong, stable wireless coverage across every floor and site.'},
@@ -89,14 +89,14 @@
   // the homepage only teases a diverse subset in a single row.
   const CASES = (window.FV_CASES_FEATURED || []).map((i) => window.FV_CASES[i]);
 
-  const OEMS = ['CP PLUS','UNV','PRAMA','Honeywell','RoyalShield','Cisco','D Link','NETGEAR','DIGISOL',
+  const OEMS = ['CP PLUS','UNV','PRAMA','Honeywell','RoyalShield','Cisco','D Link','NETGEAR','DIGISOL','Grandstream',
     'Dell','HP','Lenovo','Samsung','ASUS','Acer','Lapcare','Portronics','Intex','Polycab',
     'Usha Martin','ERD','Uniway Infocom','BPE','Microtek','Okaya','Dynamic Rack','Soltrix','LG'];
 
   // Maps a brand's display name to its real logo file under images/logos/oem/.
   const OEM_LOGO_FILE = {
     'CP PLUS':'oem-cp-plus.png', 'UNV':'oem-unv.png', 'PRAMA':'oem-prama.png', 'Honeywell':'oem-honeywell.png', 'RoyalShield':'oem-royalshield.png',
-    'Cisco':'oem-cisco.png', 'D Link':'oem-d-link.png', 'NETGEAR':'oem-netgear.png', 'DIGISOL':'oem-digisol.png',
+    'Cisco':'oem-cisco.png', 'D Link':'oem-d-link.png', 'NETGEAR':'oem-netgear.png', 'DIGISOL':'oem-digisol.png', 'Grandstream':'oem-grandstream.png',
     'Dell':'oem-dell.png', 'HP':'oem-hp.png', 'Lenovo':'oem-lenovo.png', 'Samsung':'oem-samsung.png', 'ASUS':'oem-asus.png', 'Acer':'oem-acer.png', 'LG':'oem-lg.png',
     'Lapcare':'oem-lapcare.png', 'Portronics':'oem-portronics.png', 'Intex':'oem-intex.png',
     'Polycab':'oem-polycab.png', 'Usha Martin':'oem-usha-martin.png', 'ERD':'oem-erd.png', 'BPE':'oem-bpe.png', 'Microtek':'oem-microtek.png', 'Okaya':'oem-okaya.png',
