@@ -51,7 +51,7 @@
     { slug:'datacenter', url:'capabilities/data-center-power.html', num:'06', name:'Data Center & Power', short:'Racks, cooling, UPS & PDU',
       headline:'The backbone behind every deployment.',
       blurb:'A well-equipped data center ensures smooth, uninterrupted operations for the enterprise it supports.',
-      brands:['BPE','Microtek','Okaya','Dynamic Rack','Soltrix','LG'],
+      brands:['BPE','Microtek','Okaya','Dynamic Rack','Soltrix'],
       items:[
         {n:'1',t:'Rack Solutions',d:'Sturdy, customisable racks and enclosures supporting hardware management and organisation.'},
         {n:'2',t:'Cooling Solutions',d:'Precision cooling systems, cooling racks and air conditioning for peak data center efficiency.'},
@@ -91,13 +91,13 @@
 
   const OEMS = ['CP PLUS','UNV','PRAMA','Honeywell','RoyalShield','Cisco','D Link','NETGEAR','DIGISOL','Grandstream',
     'Dell','HP','Lenovo','Samsung','ASUS','Acer','Lapcare','Portronics','Intex','Polycab',
-    'Usha Martin','ERD','Uniway Infocom','BPE','Microtek','Okaya','Dynamic Rack','Soltrix','LG'];
+    'Usha Martin','ERD','Uniway Infocom','BPE','Microtek','Okaya','Dynamic Rack','Soltrix'];
 
   // Maps a brand's display name to its real logo file under images/logos/oem/.
   const OEM_LOGO_FILE = {
     'CP PLUS':'oem-cp-plus.png', 'UNV':'oem-unv.png', 'PRAMA':'oem-prama.png', 'Honeywell':'oem-honeywell.png', 'RoyalShield':'oem-royalshield.png',
     'Cisco':'oem-cisco.jpg', 'D Link':'oem-d-link.png', 'NETGEAR':'oem-netgear.png', 'DIGISOL':'oem-digisol.png', 'Grandstream':'oem-grandstream.jpg',
-    'Dell':'oem-dell.png', 'HP':'oem-hp.png', 'Lenovo':'oem-lenovo.png', 'Samsung':'oem-samsung.png', 'ASUS':'oem-asus.png', 'Acer':'oem-acer.png', 'LG':'oem-lg.png',
+    'Dell':'oem-dell.png', 'HP':'oem-hp.png', 'Lenovo':'oem-lenovo.png', 'Samsung':'oem-samsung.png', 'ASUS':'oem-asus.png', 'Acer':'oem-acer.png',
     'Lapcare':'oem-lapcare.png', 'Portronics':'oem-portronics.png', 'Intex':'oem-intex.png',
     'Polycab':'oem-polycab.png', 'Usha Martin':'oem-usha-martin.png', 'ERD':'oem-erd.png', 'BPE':'oem-bpe.png', 'Microtek':'oem-microtek.png', 'Okaya':'oem-okaya.png',
     'Dynamic Rack':'oem-dynamic-rack.png', 'Soltrix':'oem-soltrix.png', 'Uniway Infocom':'oem-uniway-infocom.png'
