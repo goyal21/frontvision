@@ -34,12 +34,37 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Data Center & Power",
-  "serviceType": "Data Center & Power",
-  "provider": { "@type": "ProfessionalService", "name": "Front Vision", "url": "https://www.frontvision.co.in/" },
-  "areaServed": [{ "@type": "AdministrativeArea", "name": "Delhi NCR" }, { "@type": "Country", "name": "India" }],
-  "description": "Racks, precision cooling, UPS and PDU power backup systems for reliable data center operations across Noida and Delhi NCR."
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Data Center & Power",
+      "serviceType": "Data Center & Power",
+      "provider": { "@type": "ProfessionalService", "name": "Front Vision", "url": "https://www.frontvision.co.in/" },
+      "areaServed": [{ "@type": "AdministrativeArea", "name": "Delhi NCR" }, { "@type": "Country", "name": "India" }],
+      "audience": { "@type": "Audience", "audienceType": "Small and medium businesses and enterprises" },
+      "description": "Racks, precision cooling, UPS and PDU power backup systems for reliable data center operations across Noida and Delhi NCR."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you supply UPS and power backup for a small office, not just a full data center?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, we size UPS and power backup for a single server room or office just as readily as a full data center build-out." }
+        },
+        {
+          "@type": "Question",
+          "name": "What rack, cooling and power brands do you supply?",
+          "acceptedAnswer": { "@type": "Answer", "text": "BPE, Microtek, Okaya, Dynamic Rack and Soltrix, covering racks, precision cooling and UPS/PDU power backup." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer maintenance for data center equipment after installation?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, warranty and AMC support are handled directly by us across the racks, cooling and power systems we install." }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -117,6 +142,26 @@
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-okaya.png" alt="Okaya" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-dynamic-rack.png" alt="Dynamic Rack" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-soltrix.png" alt="Soltrix" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid #232327;background:#121214">
+    <div style="max-width:1200px;margin:0 auto;padding:44px var(--gutter)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.12em;color:#EC4453;margin-bottom:26px">FREQUENTLY ASKED QUESTIONS</div>
+      <div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">Do you supply UPS and power backup for a small office, not just a full data center?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">Yes, we size UPS and power backup for a single server room or office just as readily as a full data center build-out.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">What rack, cooling and power brands do you supply?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">BPE, Microtek, Okaya, Dynamic Rack and Soltrix, covering racks, precision cooling and UPS/PDU power backup.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">Do you offer maintenance for data center equipment after installation?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">Yes, warranty and AMC support are handled directly by us across the racks, cooling and power systems we install.</div>
         </div>
       </div>
     </div>

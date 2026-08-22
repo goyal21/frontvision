@@ -34,12 +34,37 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Servers & Storage",
-  "serviceType": "Servers & Storage",
-  "provider": { "@type": "ProfessionalService", "name": "Front Vision", "url": "https://www.frontvision.co.in/" },
-  "areaServed": [{ "@type": "AdministrativeArea", "name": "Delhi NCR" }, { "@type": "Country", "name": "India" }],
-  "description": "Tower, rack and blade servers, NAS/SAN storage and hybrid cloud-ready infrastructure, sized and delivered for enterprises across Delhi NCR."
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Servers & Storage",
+      "serviceType": "Servers & Storage",
+      "provider": { "@type": "ProfessionalService", "name": "Front Vision", "url": "https://www.frontvision.co.in/" },
+      "areaServed": [{ "@type": "AdministrativeArea", "name": "Delhi NCR" }, { "@type": "Country", "name": "India" }],
+      "audience": { "@type": "Audience", "audienceType": "Small and medium businesses and enterprises" },
+      "description": "Tower, rack and blade servers, NAS/SAN storage and hybrid cloud-ready infrastructure, sized and delivered for enterprises across Delhi NCR."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I buy a single server, or only large rack deployments?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Both. We supply single tower servers for small offices as well as multi-rack deployments, sized to the workload rather than a minimum order size." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you help size the right server for my workload?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, we scope current and future workload, budget and growth before recommending hardware, rather than quoting a generic spec sheet." }
+        },
+        {
+          "@type": "Question",
+          "name": "What server and storage brands do you supply?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Dell, HP, Lenovo and Samsung, in tower, rack and blade formats, plus NAS/SAN and hybrid cloud-ready storage." }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -116,6 +141,26 @@
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-hp.png" alt="HP" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-lenovo.png" alt="Lenovo" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-samsung.png" alt="Samsung" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid #232327;background:#121214">
+    <div style="max-width:1200px;margin:0 auto;padding:44px var(--gutter)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.12em;color:#EC4453;margin-bottom:26px">FREQUENTLY ASKED QUESTIONS</div>
+      <div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">Can I buy a single server, or only large rack deployments?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">Both. We supply single tower servers for small offices as well as multi-rack deployments, sized to the workload rather than a minimum order size.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">Do you help size the right server for my workload?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">Yes, we scope current and future workload, budget and growth before recommending hardware, rather than quoting a generic spec sheet.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">What server and storage brands do you supply?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">Dell, HP, Lenovo and Samsung, in tower, rack and blade formats, plus NAS/SAN and hybrid cloud-ready storage.</div>
         </div>
       </div>
     </div>

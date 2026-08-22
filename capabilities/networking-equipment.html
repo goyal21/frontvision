@@ -34,12 +34,37 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Networking Equipment",
-  "serviceType": "Networking Equipment",
-  "provider": { "@type": "ProfessionalService", "name": "Front Vision", "url": "https://www.frontvision.co.in/" },
-  "areaServed": [{ "@type": "AdministrativeArea", "name": "Delhi NCR" }, { "@type": "Country", "name": "India" }],
-  "description": "Routers, switches, enterprise Wi-Fi and network security appliances supplied and deployed across offices, campuses and multi-site enterprises in Delhi NCR."
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Networking Equipment",
+      "serviceType": "Networking Equipment",
+      "provider": { "@type": "ProfessionalService", "name": "Front Vision", "url": "https://www.frontvision.co.in/" },
+      "areaServed": [{ "@type": "AdministrativeArea", "name": "Delhi NCR" }, { "@type": "Country", "name": "India" }],
+      "audience": { "@type": "Audience", "audienceType": "Small and medium businesses, offices, campuses and multi-site enterprises" },
+      "description": "Routers, switches, enterprise Wi-Fi and network security appliances supplied and deployed across offices, campuses and multi-site enterprises in Delhi NCR."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you supply networking equipment for small offices, not just large campuses?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We size and supply routers, switches and Wi-Fi for single-office setups as well as multi-site enterprise networks, from the same OEM brands either way." }
+        },
+        {
+          "@type": "Question",
+          "name": "What networking brands do you supply?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Cisco, D Link, NETGEAR, DIGISOL and Grandstream, matched to the scale and budget of your network rather than a fixed brand list." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you also handle network security, not just connectivity?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, firewalls, VPN and other security appliances are part of the same scope, so connectivity and protection are designed together, not bolted on separately." }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -117,6 +142,26 @@
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-netgear.png" alt="NETGEAR" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-digisol.png" alt="DIGISOL" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-grandstream.jpg" alt="Grandstream" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid #232327;background:#121214">
+    <div style="max-width:1200px;margin:0 auto;padding:44px var(--gutter)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.12em;color:#EC4453;margin-bottom:26px">FREQUENTLY ASKED QUESTIONS</div>
+      <div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">Do you supply networking equipment for small offices, not just large campuses?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">Yes. We size and supply routers, switches and Wi-Fi for single-office setups as well as multi-site enterprise networks, from the same OEM brands either way.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">What networking brands do you supply?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">Cisco, D Link, NETGEAR, DIGISOL and Grandstream, matched to the scale and budget of your network rather than a fixed brand list.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">Do you also handle network security, not just connectivity?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">Yes, firewalls, VPN and other security appliances are part of the same scope, so connectivity and protection are designed together, not bolted on separately.</div>
         </div>
       </div>
     </div>

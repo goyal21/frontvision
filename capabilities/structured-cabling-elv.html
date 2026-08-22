@@ -34,12 +34,37 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Structured Cabling & ELV",
-  "serviceType": "Structured Cabling & ELV",
-  "provider": { "@type": "ProfessionalService", "name": "Front Vision", "url": "https://www.frontvision.co.in/" },
-  "areaServed": [{ "@type": "AdministrativeArea", "name": "Delhi NCR" }, { "@type": "Country", "name": "India" }],
-  "description": "CAT6/6A and fiber structured cabling, ELV systems and IoT pathways — coordinated with MEP and interior contractors across Noida and Delhi NCR."
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Structured Cabling & ELV",
+      "serviceType": "Structured Cabling & ELV",
+      "provider": { "@type": "ProfessionalService", "name": "Front Vision", "url": "https://www.frontvision.co.in/" },
+      "areaServed": [{ "@type": "AdministrativeArea", "name": "Delhi NCR" }, { "@type": "Country", "name": "India" }],
+      "audience": { "@type": "Audience", "audienceType": "Small and medium businesses, offices and enterprises" },
+      "description": "CAT6/6A and fiber structured cabling, ELV systems and IoT pathways — coordinated with MEP and interior contractors across Noida and Delhi NCR."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you handle cabling for a single small office, not just large fit-outs?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, we scope and install structured cabling for single-office fit-outs as well as large multi-floor projects, coordinated with your interior contractor either way." }
+        },
+        {
+          "@type": "Question",
+          "name": "What cabling standards do you follow?",
+          "acceptedAnswer": { "@type": "Answer", "text": "CAT6 and CAT6A copper plus fiber, installed to the ANSI/TIA-568 series with every run tested and certified against the category it's sold as." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is ELV, and do I need it?",
+          "acceptedAnswer": { "@type": "Answer", "text": "ELV (extra-low-voltage) covers systems like PA/GDA, BMS wiring and access-control backbones that share the same pathways as your data cabling — worth planning together if you're doing CCTV, access control or building automation." }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -117,6 +142,26 @@
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-erd.png" alt="ERD" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-uniway-infocom.png" alt="Uniway Infocom" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
             <div class="logo-tile" style="height:62px"><img src="../images/logos/oem/oem-d-link.png" alt="D Link" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid #232327;background:#121214">
+    <div style="max-width:1200px;margin:0 auto;padding:44px var(--gutter)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.12em;color:#EC4453;margin-bottom:26px">FREQUENTLY ASKED QUESTIONS</div>
+      <div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">Do you handle cabling for a single small office, not just large fit-outs?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">Yes, we scope and install structured cabling for single-office fit-outs as well as large multi-floor projects, coordinated with your interior contractor either way.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">What cabling standards do you follow?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">CAT6 and CAT6A copper plus fiber, installed to the ANSI/TIA-568 series with every run tested and certified against the category it's sold as.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:#F7F7F8;margin-bottom:6px">What is ELV, and do I need it?</div>
+          <div style="font-size:15.5px;color:#B3B6BC;line-height:1.6">ELV (extra-low-voltage) covers systems like PA/GDA, BMS wiring and access-control backbones that share the same pathways as your data cabling — worth planning together if you're doing CCTV, access control or building automation.</div>
         </div>
       </div>
     </div>
