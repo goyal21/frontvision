@@ -96,7 +96,7 @@
   // Maps a brand's display name to its real logo file under images/logos/oem/.
   const OEM_LOGO_FILE = {
     'CP PLUS':'oem-cp-plus.png', 'UNV':'oem-unv.png', 'PRAMA':'oem-prama.png', 'Honeywell':'oem-honeywell.png', 'RoyalShield':'oem-royalshield.png',
-    'Cisco':'oem-cisco.png', 'D Link':'oem-d-link.png', 'NETGEAR':'oem-netgear.png', 'DIGISOL':'oem-digisol.png', 'Grandstream':'oem-grandstream.png',
+    'Cisco':'oem-cisco.png', 'D Link':'oem-d-link.png', 'NETGEAR':'oem-netgear.png', 'DIGISOL':'oem-digisol.png', 'Grandstream':'oem-grandstream.jpg',
     'Dell':'oem-dell.png', 'HP':'oem-hp.png', 'Lenovo':'oem-lenovo.png', 'Samsung':'oem-samsung.png', 'ASUS':'oem-asus.png', 'Acer':'oem-acer.png', 'LG':'oem-lg.png',
     'Lapcare':'oem-lapcare.png', 'Portronics':'oem-portronics.png', 'Intex':'oem-intex.png',
     'Polycab':'oem-polycab.png', 'Usha Martin':'oem-usha-martin.png', 'ERD':'oem-erd.png', 'BPE':'oem-bpe.png', 'Microtek':'oem-microtek.png', 'Okaya':'oem-okaya.png',
