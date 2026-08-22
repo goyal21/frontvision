@@ -95,6 +95,9 @@ button { border: 0; background: none; font: inherit; color: inherit; cursor: poi
   .split-2 { grid-template-columns: 1fr !important; }
   .oem-grid { grid-template-columns: repeat(4, 1fr) !important; }
   #nav-caps-list { grid-template-columns: 1fr !important; max-height: 70vh; overflow-y: auto; }
+  /* Full case-studies listing page: a real "browse everything" grid,
+     not a carousel — visitors here are scanning the whole set. */
+  .cs-page-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 @media (max-width: 768px) {
   /* Photo-card rows (projects, case studies, blog) turn into a wall of
@@ -125,6 +128,7 @@ button { border: 0; background: none; font: inherit; color: inherit; cursor: poi
 @media (max-width: 560px) {
   :root { --gutter: 16px; }
   .oem-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .cs-page-grid { grid-template-columns: 1fr !important; }
   h1 { font-size: 34px !important; }
   /* The desktop header packs a wordmark, a "Request a quote" pill and the
      menu button in one row — on a phone-width screen there just isn't

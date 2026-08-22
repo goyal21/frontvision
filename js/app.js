@@ -67,20 +67,9 @@
     ['06','AMC & Lifecycle Support','Warranty management, health checks and ongoing maintenance.']
   ];
 
-  const CASES = [
-    ['Indian Post Office','Counter halls and cash areas across post office branches','GOVERNMENT · PAN-INDIA','case-indian-post-office.jpg'],
-    ['Indian Army','Cantonment perimeter and parade ground surveillance','DEFENCE','case-indian-army.jpg'],
-    ['Employees’ Provident Fund Organisation','Public-facing office floors and record archives','CENTRAL GOVERNMENT','case-epfo-bhavan.jpg'],
-    ['Home Department, Chandigarh','Secretariat building coverage with controlled access','STATE GOVERNMENT','case-home-department-chandigarh.jpg'],
-    ['Finance Department, Uttar Pradesh','Multi-site rollout across departmental offices','STATE GOVERNMENT','case-finance-department-uttar-pradesh.jpg'],
-    ['Department of School Education & Literacy','Classroom and campus safety across school clusters','EDUCATION','case-dept-school-education-literacy.jpg'],
-    ['Department of Agriculture, Cooperation & Farmers Welfare','Field station and storage yard monitoring','GOVERNMENT · AGRICULTURE','case-agriculture-department-field.jpg'],
-    ['Niine — Shudh Plus Hygiene Products','Production line and dispatch area surveillance','MANUFACTURING','case-niine-shudh-plus-hygiene-plant.jpg'],
-    ['Residents’ Welfare Association','Township gates, common areas and parking with ANPR','RESIDENTIAL','case-residents-welfare-association.jpg'],
-    ['Rural Development, Maharashtra','Dispersed rural sites linked over wireless backhaul','STATE GOVERNMENT','case-rural-development-maharashtra.jpg'],
-    ['Institutional & corporate buildings','Entrance, lobby and floor-level coverage','CORPORATE','case-defence-corporate-building.jpg'],
-    ['Installation standard','Neat cable dressing and mounting on every site we hand over','EXECUTION QUALITY','case-installation-standard-corporate-interior.jpg']
-  ];
+  // Full list lives in js/cases-data.js (shared with case-studies.html);
+  // the homepage only teases a diverse subset in a single row.
+  const CASES = (window.FV_CASES_FEATURED || []).map((i) => window.FV_CASES[i]);
 
   const OEMS = ['CP PLUS','UNV','PRAMA','Honeywell','RoyalShield','Cisco','D Link','NETGEAR','DIGISOL','Grandstream',
     'Dell','HP','Lenovo','Samsung','ASUS','Acer','Lapcare','Portronics','Intex','Polycab',
