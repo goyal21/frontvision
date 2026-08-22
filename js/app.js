@@ -119,6 +119,18 @@
   // reference, so it just looks like a random signage board floating on
   // screen. Skip the choreography there the same way reduced-motion does.
   const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+  // It's a "welcome" moment for a first landing, not something that should
+  // replay every time — sessionStorage so it plays once per browser
+  // session (fresh visit later still gets it), not once ever. Other pages
+  // link back to index.html with a real navigation (full page load), so
+  // without this the whole zoom choreography would fire again on every
+  // "Home" click. Guarded in case storage is unavailable (privacy mode).
+  const INTRO_SEEN_KEY = 'fv-intro-seen';
+  let alreadySeenIntro = false;
+  try { alreadySeenIntro = sessionStorage.getItem(INTRO_SEEN_KEY) === '1'; } catch (e) {}
+  function markIntroSeen() {
+    try { sessionStorage.setItem(INTRO_SEEN_KEY, '1'); } catch (e) {}
+  }
   let introTimers = [];
   function setIntro(state) {
     introStage.setAttribute('data-intro', state);
@@ -135,13 +147,13 @@
     setIntro('zoom');
     introTimers = [setTimeout(() => setIntro('done'), 2900)];
   }
-  if (reducedMotion || isMobile) {
-    // Respect the OS-level motion preference, and skip the desktop-monitor
-    // zoom metaphor on phone-width screens where it doesn't read correctly
-    // (CSS already collapses the transition durations for reduced-motion;
-    // this avoids the multi-second wait too).
+  if (reducedMotion || isMobile || alreadySeenIntro) {
+    // Respect the OS-level motion preference, skip the desktop-monitor zoom
+    // metaphor on phone-width screens where it doesn't read correctly, and
+    // skip it entirely once it's already played this session.
     setIntro('done');
   } else {
+    markIntroSeen();
     introStage.addEventListener('click', (e) => { if (e.target.id !== 'skip-intro-btn') skipIntro(); });
     document.getElementById('skip-intro-btn').addEventListener('click', (e) => { e.stopPropagation(); skipIntro(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') skipIntro(); });
