@@ -4,7 +4,7 @@
   'use strict';
 
   const CAPS = [
-    { slug:'surveillance', num:'01', name:'Surveillance & Security', short:'CCTV, ANPR, access control, firewalls & UTM',
+    { slug:'surveillance', url:'capabilities/surveillance-security.html', num:'01', name:'Surveillance & Security', short:'CCTV, ANPR, access control, firewalls & UTM',
       headline:'Surveillance and security, end to end.',
       blurb:'From camera placement surveys to phase-wise rollout, with network security and access control built into the same scope — 3,000+ camera deployments delivered across border security, PSU campuses and manufacturing plants. Every brand in our surveillance line-up — RoyalShield (our exclusive line), CP Plus, Honeywell, PRAMA and UNV — is STQC certified, so compliance is settled before the tender is written, not chased down after.',
       brands:['CP PLUS','Honeywell','PRAMA','UNV','RoyalShield'],
@@ -15,7 +15,7 @@
         {n:'4',t:'Firewalls, UTM & Secure Access',d:'Threat-protection appliances, VPN and multi-factor access safeguarding the network the cameras run on.'},
         {n:'5',t:'Access Control & Attendance',d:'Card, biometric and facial-recognition access control integrated with attendance systems.'},
         {n:'6',t:'BOQ-Driven Execution',d:'Clear quantity schedules and phase-wise rollout across large sites.'}]},
-    { slug:'networking', num:'02', name:'Networking Equipment', short:'Routers, switches, wireless & network security',
+    { slug:'networking', url:'capabilities/networking-equipment.html', num:'02', name:'Networking Equipment', short:'Routers, switches, wireless & network security',
       headline:'Networks built for uptime.',
       blurb:'Connectivity that keeps offices, campuses and remote sites online — from single-office LANs to multi-site enterprise networks.',
       brands:['Cisco','D Link','NETGEAR','DIGISOL','Grandstream'],
@@ -23,7 +23,7 @@
         {n:'1',t:'Routers & Switches',d:'Basic models for small offices through advanced configurations for large enterprises — reliable connectivity, improved network performance.'},
         {n:'2',t:'Wireless Access Points',d:'Enterprise Wi-Fi and mesh networking for strong, stable wireless coverage across every floor and site.'},
         {n:'3',t:'Network Security Devices',d:'Firewalls, VPN solutions and other security appliances protecting data and network integrity.'}]},
-    { slug:'servers', num:'03', name:'Servers & Storage', short:'Rack, tower & blade servers, NAS/SAN',
+    { slug:'servers', url:'capabilities/servers-storage.html', num:'03', name:'Servers & Storage', short:'Rack, tower & blade servers, NAS/SAN',
       headline:'Compute & storage that scales.',
       blurb:'Reliable infrastructure for data storage, processing and enterprise applications — sized to your workload today and your growth tomorrow.',
       brands:['Dell','HP','Lenovo','Samsung'],
@@ -31,7 +31,7 @@
         {n:'1',t:'Servers',d:'Tower, rack and blade servers from leading OEMs — essential for data storage, processing and enterprise applications.'},
         {n:'2',t:'Storage Arrays',d:'NAS, SAN and hybrid cloud-ready storage solutions ensuring data integrity and easy access.'},
         {n:'3',t:'Configured to Workload',d:'Pre-configured or fully customisable systems matched to capacity and performance requirements.'}]},
-    { slug:'endpoints', num:'04', name:'Desktops, Laptops & Workstations', short:'OEM fleets plus custom gaming & design builds',
+    { slug:'endpoints', url:'capabilities/desktops-laptops-workstations.html', num:'04', name:'Desktops, Laptops & Workstations', short:'OEM fleets plus custom gaming & design builds',
       headline:'Every desk, specified right.',
       blurb:'OEM desktops and laptops for the workforce, and purpose-built machines where off-the-shelf will not do — gaming rigs and design workstations assembled, tested and warranted in-house.',
       brands:['Dell','HP','Lenovo','ASUS','Acer','Lapcare','Portronics','Intex'],
@@ -40,7 +40,7 @@
         {n:'2',t:'Custom Gaming Systems',d:'Built to a target frame rate and budget — GPU, cooling and PSU headroom sized to the games, not the marketing.'},
         {n:'3',t:'Design & Content Workstations',d:'CAD, 3D, editing and rendering builds — colour-accurate displays, ECC or high-capacity memory, calibrated for the software in use.'},
         {n:'4',t:'Fleet Rollout & Support',d:'Standard-image deployment, asset tagging, warranty handling and AMC across the installed base.'}]},
-    { slug:'cabling', num:'05', name:'Structured Cabling & ELV', short:'CAT6/6A, Fiber, ELV & IoT pathways',
+    { slug:'cabling', url:'capabilities/structured-cabling-elv.html', num:'05', name:'Structured Cabling & ELV', short:'CAT6/6A, Fiber, ELV & IoT pathways',
       headline:'Cabling done right, the first time.',
       blurb:'Cabling infrastructure planned to avoid rework once finishes, ceilings and joinery are in place — coordinated directly with MEP and interior contractors on-site.',
       brands:['Polycab','Usha Martin','ERD','Uniway Infocom','D Link'],
@@ -48,7 +48,7 @@
         {n:'1',t:'Data & Network Cabling',d:'Structured CAT6 / CAT6A / Fiber cabling, patch panels and connectors for guest, corporate and back-of-house networks.'},
         {n:'2',t:'ELV Systems',d:'Extra-low-voltage infrastructure — PA/GDA, BMS wiring and access-control backbones.'},
         {n:'3',t:'IoT & Sensor Integration',d:'Cabling pathways designed for current and future IoT deployments — sensors, controllers, gateways.'}]},
-    { slug:'datacenter', num:'06', name:'Data Center & Power', short:'Racks, cooling, UPS & PDU',
+    { slug:'datacenter', url:'capabilities/data-center-power.html', num:'06', name:'Data Center & Power', short:'Racks, cooling, UPS & PDU',
       headline:'The backbone behind every deployment.',
       blurb:'A well-equipped data center ensures smooth, uninterrupted operations for the enterprise it supports.',
       brands:['BPE','Microtek','Okaya','Dynamic Rack','Soltrix','LG'],
@@ -92,6 +92,9 @@
   // template), not native <button>/<a> — enhance them with keyboard support
   // (tabindex, role, Enter/Space activation) so they're WCAG 2.1.1 compliant.
   function enhanceClickable(el, role) {
+    // Real <a>/<button> elements are already keyboard-operable with correct
+    // semantics — only synthetic click targets (plain <div>/<span>) need this.
+    if (el.tagName === 'A' || el.tagName === 'BUTTON') return;
     if (el.__a11y) return;
     el.__a11y = true;
     if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
@@ -104,7 +107,7 @@
     });
   }
   function enhanceAll(root) {
-    (root || document).querySelectorAll('.nav-go, .cap-open, .dropdown-item, .related-chip, .chip, #logo-home, #quote-back, #quote-next, #quote-reset').forEach((el) => enhanceClickable(el));
+    (root || document).querySelectorAll('.nav-go, .chip, #logo-home, #quote-back, #quote-next, #quote-reset').forEach((el) => enhanceClickable(el));
   }
 
   // ---------------- Intro splash ----------------
@@ -151,22 +154,17 @@
   const navCapsPanel = document.getElementById('nav-caps-panel');
   const navCapsList = document.getElementById('nav-caps-list');
   const footerCapsList = document.getElementById('footer-caps-list');
-  const homeView = document.getElementById('home-view');
-  const detailView = document.getElementById('detail-view');
-
   navCapsList.innerHTML = CAPS.map(c => `
-    <div class="dropdown-item cap-open" data-slug="${c.slug}" style="cursor:pointer;padding:14px 16px;border-radius:4px;border:1px solid transparent">
+    <a class="dropdown-item" href="${c.url}" style="cursor:pointer;padding:14px 16px;border-radius:4px;border:1px solid transparent;display:block;text-decoration:none">
       <div style="display:flex;gap:10px;align-items:baseline">
         <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#EC4453">${c.num}</span>
         <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:16px;color:#F7F7F8">${esc(c.name)}</span>
       </div>
       <div style="font-size:13.5px;color:#8C8C94;margin-top:4px;padding-left:26px">${esc(c.short)}</div>
-    </div>`).join('');
+    </a>`).join('');
 
   footerCapsList.innerHTML = CAPS.map(c =>
-    `<span class="cap-open hv-lighten" data-slug="${c.slug}" style="cursor:pointer;color:#B3B6BC">${esc(c.name)}</span>`).join('');
-  enhanceAll(navCapsList);
-  enhanceAll(footerCapsList);
+    `<a href="${c.url}" class="hv-lighten" style="cursor:pointer;color:#B3B6BC;text-decoration:none">${esc(c.name)}</a>`).join('');
 
   const mobileBtn = document.getElementById('mobile-menu-btn');
   function setMenuOpen(open) {
@@ -192,27 +190,12 @@
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
-  function showHome() {
-    detailView.hidden = true;
-    homeView.hidden = false;
-  }
-  function showDetail() {
-    homeView.hidden = true;
-    detailView.hidden = false;
-  }
-
+  // Capability detail is now real pages under capabilities/*.html (for
+  // indexable, distinct URLs per capability — see the cap-open <a> tags in
+  // the markup) rather than a client-side view swap, so navigation here is
+  // just scrolling within the current page.
   function go(targetId) {
     closeMenu();
-    // The quote form renders outside both the home and detail views (it's
-    // always in the DOM), so jumping to it should never force a view switch.
-    if (targetId === 'quote') { scrollToId('quote'); return; }
-    const wasDetail = !detailView.hidden;
-    if (wasDetail) {
-      showHome();
-      window.scrollTo({ top: 0 });
-      if (targetId) setTimeout(() => scrollToId(targetId), 60);
-      return;
-    }
     if (targetId) scrollToId(targetId);
     else window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -221,16 +204,7 @@
     el.addEventListener('click', () => go(el.getAttribute('data-go')));
   });
   document.getElementById('logo-home').addEventListener('click', () => go(''));
-
-  // ---------------- Capability detail ----------------
-  const dCrumb = document.getElementById('detail-crumb');
-  const dNum = document.getElementById('detail-num');
-  const dHeadline = document.getElementById('detail-headline');
-  const dBlurb = document.getElementById('detail-blurb');
-  const dItems = document.getElementById('detail-items');
-  const dBrandsWrap = document.getElementById('detail-brands-wrap');
-  const dLogos = document.getElementById('detail-logos');
-  const dRelated = document.getElementById('detail-related');
+  enhanceAll();
 
   function logoTile(name) {
     const file = OEM_LOGO_FILE[name];
@@ -239,41 +213,6 @@
     }
     return `<div class="logo-tile" style="height:62px" title="${esc(name)}"><span>${esc(name)}</span></div>`;
   }
-
-  function openCap(slug) {
-    const cap = CAPS.find(c => c.slug === slug) || CAPS[0];
-    dCrumb.textContent = cap.name.toUpperCase();
-    dNum.textContent = cap.num;
-    dHeadline.textContent = cap.headline;
-    dBlurb.textContent = cap.blurb;
-    dItems.innerHTML = cap.items.map(it => `
-      <div style="background:#121214;border:1px solid #232327;border-radius:5px;padding:24px">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#EC4453;margin-bottom:8px">${esc(it.n)}</div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;color:#F7F7F8;margin-bottom:8px">${esc(it.t)}</div>
-        <div style="font-size:15.5px;color:#B3B6BC">${esc(it.d)}</div>
-      </div>`).join('');
-    if (cap.brands && cap.brands.length) {
-      dBrandsWrap.style.display = '';
-      dLogos.innerHTML = cap.brands.map(logoTile).join('');
-    } else {
-      dBrandsWrap.style.display = 'none';
-    }
-    dRelated.innerHTML = CAPS.filter(c => c.slug !== cap.slug).slice(0, 3).map(c =>
-      `<div class="cap-open related-chip" data-slug="${c.slug}" style="cursor:pointer;border:1px solid #232327;border-radius:20px;padding:8px 16px;font-size:14px;color:#F7F7F8;background:#121214">${esc(c.name)}</div>`).join('');
-    showDetail();
-    wireCapOpeners();
-    window.scrollTo({ top: 0 });
-  }
-
-  function wireCapOpeners() {
-    document.querySelectorAll('.cap-open').forEach(el => {
-      if (el.__wired) return;
-      el.__wired = true;
-      el.addEventListener('click', () => openCap(el.getAttribute('data-slug')));
-    });
-    enhanceAll();
-  }
-  wireCapOpeners();
 
   // ---------------- Case studies grid ----------------
   document.getElementById('cases-grid').innerHTML = CASES.map(([title, body, tag, img]) => `
