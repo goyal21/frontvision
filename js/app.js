@@ -121,6 +121,12 @@
   // ---------------- Intro splash ----------------
   const introStage = document.getElementById('intro-stage');
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // The intro is a "monitor sitting on a desk" metaphor that zooms up to
+  // full-bleed — it only reads correctly at desktop-monitor proportions.
+  // On a phone-width viewport the small scaled mockup has no monitor to
+  // reference, so it just looks like a random signage board floating on
+  // screen. Skip the choreography there the same way reduced-motion does.
+  const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
   let introTimers = [];
   function setIntro(state) {
     introStage.setAttribute('data-intro', state);
@@ -137,10 +143,11 @@
     setIntro('zoom');
     introTimers = [setTimeout(() => setIntro('done'), 2900)];
   }
-  if (reducedMotion) {
-    // Respect the OS-level motion preference: skip the zoom choreography
-    // entirely instead of just speeding it up (CSS already collapses the
-    // transition durations; this avoids the multi-second wait too).
+  if (reducedMotion || isMobile) {
+    // Respect the OS-level motion preference, and skip the desktop-monitor
+    // zoom metaphor on phone-width screens where it doesn't read correctly
+    // (CSS already collapses the transition durations for reduced-motion;
+    // this avoids the multi-second wait too).
     setIntro('done');
   } else {
     introStage.addEventListener('click', (e) => { if (e.target.id !== 'skip-intro-btn') skipIntro(); });
