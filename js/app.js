@@ -59,12 +59,30 @@
   ];
 
   const STEPS = [
-    ['01','Requirement Discovery','Stakeholder consultation, device counts, budget, timelines and site audit.'],
-    ['02','Solution Design & BOQ','Detailed bill of quantities mapped to product families and technical specs.'],
-    ['03','Procurement & Staging','Certified OEM sourcing, pre-configuration and quality validation in-lab.'],
-    ['04','Installation & Integration','On-site mounting, cabling, power integration and system commissioning.'],
-    ['05','Testing & Handover','Acceptance tests, documentation and formal client sign-off.'],
-    ['06','AMC & Lifecycle Support','Warranty management, health checks and ongoing maintenance.']
+    ['01','Requirement Discovery','REQUIREMENT DISCOVERY',[
+      'We understand your needs, infrastructure and business goals.',
+      'Site audit covering device counts, budget and timelines.',
+      'Stakeholder consultation to scope the right solution.']],
+    ['02','Solution Design & BOQ','SOLUTION DESIGN & BOQ',[
+      'Tailored solution design mapped to your environment.',
+      'Detailed bill of quantities with technical specifications.',
+      'Sized for performance, scalability and cost-efficiency.']],
+    ['03','Procurement & Staging','PROCUREMENT & STAGING',[
+      'Certified OEM sourcing across 50+ trusted brands.',
+      'Pre-configuration and quality validation in-lab.',
+      'Inventory verification before dispatch to site.']],
+    ['04','Installation & Integration','INSTALLATION & INTEGRATION',[
+      'On-site mounting for CCTV, networking and IT systems.',
+      'Cabling, power integration and system configuration.',
+      'Coordinated phase-wise rollout across sites.']],
+    ['05','Testing & Handover','TESTING & HANDOVER',[
+      'Thorough testing of every system and device.',
+      'Acceptance tests for performance, security and reliability.',
+      'Handover with full documentation and user training.']],
+    ['06','AMC & Lifecycle Support','AMC & LIFECYCLE SUPPORT',[
+      'Preventive maintenance and rapid issue resolution.',
+      'Defined SLAs and responsive support coverage.',
+      'Ongoing monitoring for uptime and longer system life.']]
   ];
 
   // Full list lives in js/cases-data.js (shared with case-studies.html);
@@ -239,27 +257,27 @@
 
   // ---------------- Process accordion ----------------
   const processList = document.getElementById('process-list');
-  let openStep = -1;
   function renderProcess() {
-    processList.innerHTML = STEPS.map(([num, title, body], i) => `
-      <div class="row-hover process-row" data-i="${i}" role="button" tabindex="0" aria-expanded="${openStep === i}" style="cursor:pointer;border-bottom:1px solid #232327;padding:18px 24px">
-        <div style="display:grid;grid-template-columns:44px 1fr 24px;align-items:center;gap:14px">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#EC4453">${num}</span>
-          <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:19px;color:#F7F7F8">${esc(title)}</span>
-          <span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;font-size:15px;color:#8C8C94;text-align:right">${openStep === i ? '−' : '+'}</span>
+    processList.innerHTML = STEPS.map(([num, title, tag, bullets], i) => `
+      <div class="split-2" style="display:grid;grid-template-columns:0.95fr 1.05fr;gap:40px;align-items:center;padding:36px 0;${i > 0 ? 'border-top:1px solid #232327;' : ''}">
+        <div>
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+            <div style="width:52px;height:52px;border-radius:6px;background:#E62E3E;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;color:#F7F7F8;flex-shrink:0">${num}</div>
+            <div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;letter-spacing:-0.01em;color:#F7F7F8;line-height:1.2">${esc(title)}</div>
+              <div style="width:36px;height:2px;background:#E62E3E;margin-top:8px"></div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            ${bullets.map((b) => `
+            <div style="display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start">
+              <span style="color:#EC4453;font-weight:700;line-height:1.5">✓</span>
+              <span style="font-size:15px;color:#B3B6BC;line-height:1.55">${esc(b)}</span>
+            </div>`).join('')}
+          </div>
         </div>
-        ${openStep === i ? `<div style="padding:12px 0 4px 58px;font-size:15.5px;color:#B3B6BC;max-width:760px">${esc(body)}</div>` : ''}
+        <div class="photo-panel" style="height:220px;border-radius:6px"><div class="photo-panel-tag">${esc(tag)}</div></div>
       </div>`).join('');
-    processList.querySelectorAll('.process-row').forEach(row => {
-      row.addEventListener('click', () => {
-        const i = Number(row.getAttribute('data-i'));
-        openStep = openStep === i ? -1 : i;
-        renderProcess();
-      });
-      row.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); row.click(); }
-      });
-    });
   }
   renderProcess();
 

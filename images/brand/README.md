@@ -6,16 +6,18 @@ Place this folder at `C:\Front_Vision\Website\images\brand`.
 
 | File | Size | Purpose |
 |---|---|---|
-| `favicon.svg` | vector | Primary favicon — modern browsers, scales to any size |
-| `favicon-16.png` | 16×16 | Legacy tab icon |
-| `favicon-32.png` | 32×32 | Legacy tab icon / bookmark bar |
-| `favicon-48.png` | 48×48 | Windows shortcut / older Chrome |
+| `favicon.svg` | vector | Primary favicon — **transparent background**, scales to any size |
+| `favicon-16.png` | 16×16 | Legacy tab icon — transparent |
+| `favicon-32.png` | 32×32 | Legacy tab icon / bookmark bar — transparent |
+| `favicon-48.png` | 48×48 | Windows shortcut / older Chrome — transparent |
 | `apple-touch-icon.png` | 180×180 | iOS home-screen icon |
 | `icon-192.png` | 192×192 | Android / PWA manifest |
 | `icon-512.png` | 512×512 | PWA splash + maskable source |
 | `og-image.png` | 1200×630 | The image that appears when the site link is shared (WhatsApp, LinkedIn, X, Slack, iMessage, email previews) |
 
-Mark: focus brackets in Signal Red `#E62E3E` on Void Black `#0B0B0D`, ice-white focal dot `#F7F7F8`. Bracket weight is deliberately heavier at small sizes so 16px stays legible.
+**Tab favicons are transparent.** The brackets and the focal dot are both Signal Red `#E62E3E` so the mark reads on light and dark browser chrome alike — a white dot would vanish on light tabs. Bracket weight is deliberately heavier at small sizes so 16px stays legible.
+
+The app icons (`apple-touch-icon`, `icon-192`, `icon-512`) stay **opaque** on Void Black `#0B0B0D` with the ice-white dot — iOS and Android composite home-screen icons onto their own background and require a filled square.
 
 ## Head markup — paste into every page's `<head>`
 
