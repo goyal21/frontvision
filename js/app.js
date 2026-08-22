@@ -6,7 +6,7 @@
   const CAPS = [
     { slug:'surveillance', num:'01', name:'Surveillance & Security', short:'CCTV, ANPR, access control, firewalls & UTM',
       headline:'Surveillance and security, end to end.',
-      blurb:'From camera placement surveys to phase-wise rollout, with network security and access control built into the same scope — 3,000+ camera deployments delivered across border security, PSU campuses and manufacturing plants. RoyalShield, our exclusive line, and CP Plus are both STQC certified — compliance is settled before the tender is written, not chased down after.',
+      blurb:'From camera placement surveys to phase-wise rollout, with network security and access control built into the same scope — 3,000+ camera deployments delivered across border security, PSU campuses and manufacturing plants. Every brand in our surveillance line-up — RoyalShield (our exclusive line), CP Plus, Honeywell, PRAMA and UNV — is STQC certified, so compliance is settled before the tender is written, not chased down after.',
       brands:['CP PLUS','Honeywell','PRAMA','UNV','RoyalShield'],
       items:[
         {n:'1',t:'End-to-End Design',d:'Camera placement surveys, coverage planning and NVR/VMS sizing.'},
