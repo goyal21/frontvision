@@ -41,6 +41,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.frontvision.co.in/blog.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.frontvision.co.in/blog/understanding-stqc-cctv-procurement-india.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
