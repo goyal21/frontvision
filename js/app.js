@@ -312,9 +312,10 @@
 
   // ---------------- Quote wizard ----------------
   const quoteState = {
-    step: 1, needs: [], submitted: false, ref: '', error: '',
+    step: 1, needs: [], submitted: false, submitting: false, ref: '', error: '',
     form: { boq: 'Not yet — need help scoping', site: 'Corporate office', scale: 'Whole building', timeline: 'This quarter', location: '', notes: '', name: '', company: '', phone: '', email: '' }
   };
+  const QUOTE_ENDPOINT = 'https://formspree.io/f/xqedogwg';
   const titles = { 1: 'What do you need?', 2: 'Project details', 3: 'Where do we send it?' };
   const labels = { 1: 'Continue', 2: 'Continue', 3: 'Send enquiry' };
 
@@ -380,7 +381,7 @@
     qProgress.style.width = (quoteState.step * 33.3) + '%';
     qStepTitle.textContent = titles[quoteState.step];
     qStepNum.textContent = quoteState.step;
-    qNext.textContent = labels[quoteState.step];
+    qNext.textContent = (quoteState.step === 3 && quoteState.submitting) ? 'Sending…' : labels[quoteState.step];
     qStep1.style.display = quoteState.step === 1 ? '' : 'none';
     qStep2.style.display = quoteState.step === 2 ? 'grid' : 'none';
     qStep3.style.display = quoteState.step === 3 ? 'grid' : 'none';
@@ -394,8 +395,41 @@
 
   qBack.addEventListener('click', () => { quoteState.step -= 1; quoteState.error = ''; renderQuote(); });
 
+  async function submitQuote() {
+    const s = quoteState, f = s.form;
+    s.submitting = true; s.error = ''; renderQuote();
+    const data = new FormData();
+    data.append('_subject', `Front Vision BOQ enquiry: ${f.name} (${f.company})`);
+    data.append('name', f.name);
+    data.append('company', f.company);
+    data.append('phone', f.phone);
+    data.append('email', f.email);
+    data.append('scope', needsList());
+    data.append('site_type', f.site);
+    data.append('scale', f.scale);
+    data.append('timeline', f.timeline);
+    data.append('location', f.location);
+    data.append('boq_status', f.boq);
+    data.append('notes', f.notes || 'None');
+    data.append('source', 'frontvision.co.in BOQ form');
+    try {
+      const res = await fetch(QUOTE_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      s.submitting = false;
+      if (res.ok) {
+        s.submitted = true; s.error = ''; s.ref = 'FV-2026-' + Math.floor(1000 + Math.random() * 9000);
+      } else {
+        s.error = 'Something went wrong sending your enquiry — call/WhatsApp +91 98730-76300 or email sales@frontvision.co.in directly.';
+      }
+    } catch {
+      s.submitting = false;
+      s.error = 'Something went wrong sending your enquiry — call/WhatsApp +91 98730-76300 or email sales@frontvision.co.in directly.';
+    }
+    renderQuote();
+  }
+
   qNext.addEventListener('click', () => {
     const s = quoteState, f = s.form;
+    if (s.submitting) return;
     if (s.step === 1) {
       if (!s.needs.length) { s.error = 'Select at least one area of scope so we can route your enquiry.'; return renderQuote(); }
       s.step = 2; s.error = ''; return renderQuote();
@@ -407,8 +441,7 @@
     if (!f.name.trim() || !f.company.trim()) { s.error = 'Name and company are both required.'; return renderQuote(); }
     if (!/^[0-9+\-\s]{10,15}$/.test(f.phone.trim())) { s.error = 'Enter a valid phone number (10 digits).'; return renderQuote(); }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.trim())) { s.error = 'Enter a valid work email address.'; return renderQuote(); }
-    s.submitted = true; s.error = ''; s.ref = 'FV-2026-' + Math.floor(1000 + Math.random() * 9000);
-    renderQuote();
+    submitQuote();
   });
 
   document.getElementById('quote-reset').addEventListener('click', () => {
