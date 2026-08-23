@@ -123,6 +123,12 @@ button { border: 0; background: none; font: inherit; color: inherit; cursor: poi
      free up the vertical space and pull the hero content up to match. */
   .topbar { display: none !important; }
   #hero-content { padding-top: 150px !important; }
+  /* Every subpage (capability, blog, blog post, case studies) has its own
+     fixed top-padding sized to clear the topbar + header combined; with
+     the topbar hidden above, that padding needs to shrink to match or it
+     leaves a blank strip under the header. */
+  .page-top-pad-sm { padding-top: 76px !important; }
+  .page-top-pad-lg { padding-top: 66px !important; }
   /* The long-form hero paragraph and the 4-pill feature row are useful on
      a wide screen with room to spare; on a phone they push the actual CTA
      below the fold. Swap in a one-line version and drop the pills. */
