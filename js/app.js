@@ -190,7 +190,7 @@
         <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#EC4453">${c.num}</span>
         <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:16px;color:#F7F7F8">${esc(c.name)}</span>
       </div>
-      <div style="font-size:13.5px;color:#8C8C94;margin-top:4px;padding-left:26px">${esc(c.short)}</div>
+      <div class="cap-item-desc" style="font-size:13.5px;color:#8C8C94;margin-top:4px;padding-left:26px">${esc(c.short)}</div>
     </a>`).join('');
 
   footerCapsList.innerHTML = CAPS.map(c =>

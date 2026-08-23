@@ -104,12 +104,17 @@ button { border: 0; background: none; font: inherit; color: inherit; cursor: poi
   /* The hamburger and the desktop "Capabilities" toggle share one panel.
      On mobile the full nav (Projects, Case studies, etc.) has nowhere
      else to live once .nav-links is hidden above, so it moves in here. */
-  .mobile-nav-links, .mobile-nav-cta { display: flex !important; }
+  .mobile-nav-links { display: flex !important; }
   /* On mobile, Capabilities is one row in the list that expands into the
      6-item grid on tap, rather than always showing all 6 immediately. */
   #nav-caps-list { display: none !important; }
   #nav-caps-list.mobile-caps-open { display: grid !important; }
   #mobile-caps-chevron.open { transform: rotate(180deg); }
+  /* The expanded list carries desktop's icon+name+description card; on a
+     phone that's too much per row, so drop the description and tighten
+     the row down to just the number and name. */
+  #nav-caps-list .dropdown-item { padding: 10px 12px !important; }
+  #nav-caps-list .cap-item-desc { display: none !important; }
   /* Full case-studies / blog listing pages: a real "browse everything"
      grid, not a carousel — visitors here are scanning the whole set. */
   .cs-page-grid, .blog-page-grid { grid-template-columns: repeat(2, 1fr) !important; }
