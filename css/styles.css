@@ -91,10 +91,21 @@ button { border: 0; background: none; font: inherit; color: inherit; cursor: poi
   /* Capabilities is a menu of 6 options, not a photo feed — 2 columns keeps
      it scannable as a grid instead of either a 6-row wall or a swipe list. */
   .grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+  /* The six-pillars title/description just repeats text already baked
+     into the photo above it — real estate worth reclaiming once the
+     grid narrows to 2 columns. Alt text on the image carries the same
+     info for screen readers. */
+  .pillar-text { display: none !important; }
+  .pillar-body { padding: 14px 16px !important; }
   .grid-4, .grid-2 { grid-template-columns: 1fr !important; }
   .split-2 { grid-template-columns: 1fr !important; }
   .oem-grid { grid-template-columns: repeat(4, 1fr) !important; }
   #nav-caps-list { grid-template-columns: 1fr !important; max-height: 70vh; overflow-y: auto; }
+  /* The hamburger and the desktop "Capabilities" toggle share one panel.
+     On mobile the full nav (Projects, Case studies, etc.) has nowhere
+     else to live once .nav-links is hidden above, so it moves in here. */
+  .mobile-nav-links, .mobile-nav-cta { display: flex !important; }
+  .mobile-nav-caps-label { display: block !important; }
   /* Full case-studies / blog listing pages: a real "browse everything"
      grid, not a carousel — visitors here are scanning the whole set. */
   .cs-page-grid, .blog-page-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -128,6 +139,10 @@ button { border: 0; background: none; font: inherit; color: inherit; cursor: poi
 @media (max-width: 560px) {
   :root { --gutter: 16px; }
   .oem-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  /* 28 logos over 3 columns leaves one orphaned tile alone in the last
+     row. Hiding it visually (it stays in the DOM for SEO/screen readers)
+     keeps the grid a clean rectangle on phone-width screens. */
+  #oem-grid > *:last-child { display: none !important; }
   .cs-page-grid, .blog-page-grid { grid-template-columns: 1fr !important; }
   h1 { font-size: 34px !important; }
   /* The desktop header packs a wordmark, a "Request a quote" pill and the

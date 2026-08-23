@@ -140,7 +140,18 @@
         </div>
 
         <div id="nav-caps-panel" hidden style="border-top:1px solid rgba(255,255,255,0.10);background:rgba(11,11,13,0.94);backdrop-filter:blur(14px);box-shadow:0 18px 40px -20px rgba(11,11,13,0.5)">
+          <div class="mobile-nav-links" style="display:none;max-width:1200px;margin:0 auto;padding:20px var(--gutter) 4px;flex-direction:column">
+            <div class="nav-go hv-accent" data-go="projects" style="cursor:pointer;padding:13px 2px;border-bottom:1px solid #232327;font-size:15px;font-weight:500">Projects</div>
+            <div class="nav-go hv-accent" data-go="cases" style="cursor:pointer;padding:13px 2px;border-bottom:1px solid #232327;font-size:15px;font-weight:500">Case studies</div>
+            <div class="nav-go hv-accent" data-go="industries" style="cursor:pointer;padding:13px 2px;border-bottom:1px solid #232327;font-size:15px;font-weight:500">Industries</div>
+            <div class="nav-go hv-accent" data-go="process" style="cursor:pointer;padding:13px 2px;border-bottom:1px solid #232327;font-size:15px;font-weight:500">How we work</div>
+            <a href="blog.html" class="hv-accent" style="padding:13px 2px;border-bottom:1px solid #232327;font-size:15px;font-weight:500;text-decoration:none;color:#F7F7F8;display:block">Blog</a>
+          </div>
+          <div style="display:none;max-width:1200px;margin:0 auto;padding:16px var(--gutter) 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#8C8C94" class="mobile-nav-caps-label">CAPABILITIES</div>
           <div id="nav-caps-list" style="max-width:1200px;margin:0 auto;padding:28px var(--gutter) 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px 32px"></div>
+          <div class="mobile-nav-cta" style="display:none;max-width:1200px;margin:0 auto;padding:0 var(--gutter) 28px">
+            <div class="nav-go btn-primary" data-go="quote" style="cursor:pointer;background:#E62E3E;color:#F7F7F8;padding:14px 24px;border-radius:3px;font-weight:600;font-size:15px;text-align:center">Request a quote</div>
+          </div>
         </div>
       </header>
     </div>
@@ -252,51 +263,63 @@
       <p style="max-width:600px;margin:0 0 32px;font-size:17px">Select a pillar to see scope, technology ecosystem and delivery detail.</p>
       <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
         <a class="cap-open card-hover" data-slug="surveillance" href="capabilities/surveillance-security.html" style="cursor:pointer;background:#121214;border:1px solid #232327;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(11,11,13,0.05)">
-          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/01_Surveillance_and_Security.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
-          <div style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/01_Surveillance_and_Security.jpg" alt="Surveillance &amp; Security — CCTV, ANPR, access control, firewalls &amp; UTM" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
+          <div class="pillar-body" style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div class="pillar-text" style="flex:1">
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:21px;color:#F7F7F8;line-height:1.2">Surveillance &amp; Security</div>
-          <div style="font-size:15px;color:#B3B6BC;flex:1">CCTV, ANPR, access control, firewalls &amp; UTM</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327">VIEW DETAIL →</div>
+          <div style="font-size:15px;color:#B3B6BC;margin-top:10px">CCTV, ANPR, access control, firewalls &amp; UTM</div>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327;margin-top:auto">VIEW DETAIL →</div>
         </div>
         </a>
         <a class="cap-open card-hover" data-slug="networking" href="capabilities/networking-equipment.html" style="cursor:pointer;background:#121214;border:1px solid #232327;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(11,11,13,0.05)">
-          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/02_Networking_Equipment.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
-          <div style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/02_Networking_Equipment.jpg" alt="Networking Equipment — Routers, switches, wireless &amp; network security" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
+          <div class="pillar-body" style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div class="pillar-text" style="flex:1">
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:21px;color:#F7F7F8;line-height:1.2">Networking Equipment</div>
-          <div style="font-size:15px;color:#B3B6BC;flex:1">Routers, switches, wireless &amp; network security</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327">VIEW DETAIL →</div>
+          <div style="font-size:15px;color:#B3B6BC;margin-top:10px">Routers, switches, wireless &amp; network security</div>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327;margin-top:auto">VIEW DETAIL →</div>
         </div>
         </a>
         <a class="cap-open card-hover" data-slug="servers" href="capabilities/servers-storage.html" style="cursor:pointer;background:#121214;border:1px solid #232327;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(11,11,13,0.05)">
-          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/03_Servers_and_Storage.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
-          <div style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/03_Servers_and_Storage.jpg" alt="Servers &amp; Storage — Rack, tower &amp; blade servers, NAS/SAN" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
+          <div class="pillar-body" style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div class="pillar-text" style="flex:1">
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:21px;color:#F7F7F8;line-height:1.2">Servers &amp; Storage</div>
-          <div style="font-size:15px;color:#B3B6BC;flex:1">Rack, tower &amp; blade servers, NAS/SAN</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327">VIEW DETAIL →</div>
+          <div style="font-size:15px;color:#B3B6BC;margin-top:10px">Rack, tower &amp; blade servers, NAS/SAN</div>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327;margin-top:auto">VIEW DETAIL →</div>
         </div>
         </a>
         <a class="cap-open card-hover" data-slug="endpoints" href="capabilities/desktops-laptops-workstations.html" style="cursor:pointer;background:#121214;border:1px solid #232327;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(11,11,13,0.05)">
-          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/04_Desktops_Laptops_Workstations.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
-          <div style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/04_Desktops_Laptops_Workstations.jpg" alt="Desktops, Laptops &amp; Workstations — OEM fleets plus custom gaming &amp; design builds" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
+          <div class="pillar-body" style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div class="pillar-text" style="flex:1">
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:21px;color:#F7F7F8;line-height:1.2">Desktops, Laptops &amp; Workstations</div>
-          <div style="font-size:15px;color:#B3B6BC;flex:1">OEM fleets plus custom gaming &amp; design builds</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327">VIEW DETAIL →</div>
+          <div style="font-size:15px;color:#B3B6BC;margin-top:10px">OEM fleets plus custom gaming &amp; design builds</div>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327;margin-top:auto">VIEW DETAIL →</div>
         </div>
         </a>
         <a class="cap-open card-hover" data-slug="cabling" href="capabilities/structured-cabling-elv.html" style="cursor:pointer;background:#121214;border:1px solid #232327;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(11,11,13,0.05)">
-          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/05_Structured_Cabling_ELV.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
-          <div style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/05_Structured_Cabling_ELV.jpg" alt="Structured Cabling &amp; ELV — CAT6/6A, Fiber, ELV &amp; IoT pathways" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
+          <div class="pillar-body" style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div class="pillar-text" style="flex:1">
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:21px;color:#F7F7F8;line-height:1.2">Structured Cabling &amp; ELV</div>
-          <div style="font-size:15px;color:#B3B6BC;flex:1">CAT6/6A, Fiber, ELV &amp; IoT pathways</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327">VIEW DETAIL →</div>
+          <div style="font-size:15px;color:#B3B6BC;margin-top:10px">CAT6/6A, Fiber, ELV &amp; IoT pathways</div>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327;margin-top:auto">VIEW DETAIL →</div>
         </div>
         </a>
         <a class="cap-open card-hover" data-slug="datacenter" href="capabilities/data-center-power.html" style="cursor:pointer;background:#121214;border:1px solid #232327;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(11,11,13,0.05)">
-          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/06_Data_Center_and_Power.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
-          <div style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div style="height:190px;overflow:hidden;background:#0B0B0D"><img src="images/product/six-pillars/06_Data_Center_and_Power.jpg" alt="Data Center &amp; Power — Racks, cooling, UPS &amp; PDU" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
+          <div class="pillar-body" style="padding:22px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+          <div class="pillar-text" style="flex:1">
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:21px;color:#F7F7F8;line-height:1.2">Data Center &amp; Power</div>
-          <div style="font-size:15px;color:#B3B6BC;flex:1">Racks, cooling, UPS &amp; PDU</div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327">VIEW DETAIL →</div>
+          <div style="font-size:15px;color:#B3B6BC;margin-top:10px">Racks, cooling, UPS &amp; PDU</div>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8C8C94;letter-spacing:0.08em;padding-top:8px;border-top:1px solid #232327;margin-top:auto">VIEW DETAIL →</div>
         </div>
         </a>
       </div>
