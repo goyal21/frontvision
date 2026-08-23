@@ -3,6 +3,15 @@
 // title/excerpt/tag/date only exist in one place.
 window.FV_BLOG = [
   {
+    slug: 'single-it-vendor-hospitals-hotels-complexes',
+    tag: 'INFRASTRUCTURE',
+    date: 'AUG 2026',
+    readTime: '6 MIN READ',
+    title: 'One IT vendor for hospitals, hotels and commercial complexes — not five',
+    excerpt: 'Why facility and admin heads are consolidating CCTV, networking, servers and cabling under one vendor, one PO and one AMC — and what to check before you do.',
+    img: 'single-it-vendor-hospitals-hotels-complexes.jpg'
+  },
+  {
     slug: 'cctv-installation-for-shops-and-offices',
     tag: 'SURVEILLANCE',
     date: 'AUG 2026',
