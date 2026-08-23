@@ -26,6 +26,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.frontvision.co.in/capabilities/gaming-pc-builder.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.frontvision.co.in/capabilities/structured-cabling-elv.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -44,6 +49,21 @@
     <loc>https://www.frontvision.co.in/blog.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.frontvision.co.in/blog/gaming-pc-vs-workstation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.frontvision.co.in/blog/hospitals-need-stqc-certified-cctv.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.frontvision.co.in/blog/hotel-opening-it-checklist.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.frontvision.co.in/blog/single-it-vendor-hospitals-hotels-complexes.html</loc>

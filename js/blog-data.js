@@ -3,6 +3,33 @@
 // title/excerpt/tag/date only exist in one place.
 window.FV_BLOG = [
   {
+    slug: 'gaming-pc-vs-workstation',
+    tag: 'HARDWARE',
+    date: 'AUG 2026',
+    readTime: '5 MIN READ',
+    title: 'Gaming PC vs workstation: which do you actually need?',
+    excerpt: 'A gaming PC and a design workstation are built for different loads — how to tell which one your work or play actually needs before you buy the wrong one.',
+    img: 'gaming-pc-vs-workstation.jpg'
+  },
+  {
+    slug: 'hospitals-need-stqc-certified-cctv',
+    tag: 'SURVEILLANCE',
+    date: 'AUG 2026',
+    readTime: '5 MIN READ',
+    title: 'Why hospitals specifically need STQC-certified CCTV',
+    excerpt: 'Hospital CCTV carries different stakes than a typical commercial site — patient areas, records exposure, and empanelment requirements that reference certified hardware.',
+    img: 'hospitals-need-stqc-certified-cctv.jpg'
+  },
+  {
+    slug: 'hotel-opening-it-checklist',
+    tag: 'INFRASTRUCTURE',
+    date: 'AUG 2026',
+    readTime: '6 MIN READ',
+    title: 'IT infrastructure checklist for a new hotel opening',
+    excerpt: 'What to plan for CCTV, networking, cabling and back-office IT before a new hotel opens — and why it needs to be finished before the interior fit-out.',
+    img: 'hotel-opening-it-checklist.jpg'
+  },
+  {
     slug: 'single-it-vendor-hospitals-hotels-complexes',
     tag: 'INFRASTRUCTURE',
     date: 'AUG 2026',
