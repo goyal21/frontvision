@@ -100,15 +100,40 @@ button { border: 0; background: none; font: inherit; color: inherit; cursor: poi
   .grid-4, .grid-2 { grid-template-columns: 1fr !important; }
   .split-2 { grid-template-columns: 1fr !important; }
   .oem-grid { grid-template-columns: repeat(4, 1fr) !important; }
-  #nav-caps-list { grid-template-columns: 1fr !important; max-height: 70vh; overflow-y: auto; }
+  #nav-caps-list { grid-template-columns: 1fr !important; max-height: 60vh; overflow-y: auto; }
   /* The hamburger and the desktop "Capabilities" toggle share one panel.
      On mobile the full nav (Projects, Case studies, etc.) has nowhere
      else to live once .nav-links is hidden above, so it moves in here. */
   .mobile-nav-links, .mobile-nav-cta { display: flex !important; }
-  .mobile-nav-caps-label { display: block !important; }
+  /* On mobile, Capabilities is one row in the list that expands into the
+     6-item grid on tap, rather than always showing all 6 immediately. */
+  #nav-caps-list { display: none !important; }
+  #nav-caps-list.mobile-caps-open { display: grid !important; }
+  #mobile-caps-chevron.open { transform: rotate(180deg); }
   /* Full case-studies / blog listing pages: a real "browse everything"
      grid, not a carousel — visitors here are scanning the whole set. */
   .cs-page-grid, .blog-page-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Hero: the contact/GST strip above the header is skippable on a phone —
+     free up the vertical space and pull the hero content up to match. */
+  .topbar { display: none !important; }
+  #hero-content { padding-top: 150px !important; }
+  /* The long-form hero paragraph and the 4-pill feature row are useful on
+     a wide screen with room to spare; on a phone they push the actual CTA
+     below the fold. Swap in a one-line version and drop the pills. */
+  .hero-desc-full { display: none !important; }
+  .hero-desc-mobile { display: block !important; }
+  .hero-chips { display: none !important; }
+  .hero-cta { padding: 12px 20px !important; font-size: 14px !important; }
+  /* The stat row's border-right dividers only make sense side-by-side;
+     stacked to 1 column they read as a stray line next to each number.
+     2x2 real cards fix that instead of just re-flowing the same layout. */
+  #hero-stats { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
+  #hero-stats .hero-stat {
+    border-right: none !important; padding: 16px 18px !important;
+    background: rgba(255,255,255,0.04) !important; border: 1px solid #232327 !important;
+    border-radius: 6px !important;
+  }
 }
 @media (max-width: 768px) {
   /* Photo-card rows (projects, case studies, blog) turn into a wall of

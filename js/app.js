@@ -125,7 +125,7 @@
     });
   }
   function enhanceAll(root) {
-    (root || document).querySelectorAll('.nav-go, .chip, #logo-home, #quote-back, #quote-next, #quote-reset').forEach((el) => enhanceClickable(el));
+    (root || document).querySelectorAll('.nav-go, .chip, #logo-home, #quote-back, #quote-next, #quote-reset, #mobile-caps-toggle').forEach((el) => enhanceClickable(el));
   }
 
   // ---------------- Intro splash ----------------
@@ -201,6 +201,13 @@
     navCapsPanel.hidden = !open;
     navCapsToggle.setAttribute('aria-expanded', String(open));
     mobileBtn.setAttribute('aria-expanded', String(open));
+    if (!open) {
+      const capsToggle = document.getElementById('mobile-caps-toggle');
+      const capsChevron = document.getElementById('mobile-caps-chevron');
+      navCapsList.classList.remove('mobile-caps-open');
+      if (capsChevron) capsChevron.classList.remove('open');
+      if (capsToggle) capsToggle.setAttribute('aria-expanded', 'false');
+    }
   }
   function closeMenu() { setMenuOpen(false); }
   navCapsToggle.addEventListener('click', (e) => {
@@ -212,6 +219,21 @@
   });
 
   mobileBtn.addEventListener('click', (e) => { e.stopPropagation(); setMenuOpen(navCapsPanel.hidden); });
+
+  // On mobile the panel opens to the link list first; Capabilities is a
+  // collapsed row that expands into the 6-item grid on tap, rather than
+  // dumping all 6 cards open immediately.
+  const mobileCapsToggle = document.getElementById('mobile-caps-toggle');
+  const mobileCapsChevron = document.getElementById('mobile-caps-chevron');
+  if (mobileCapsToggle) {
+    mobileCapsToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = !navCapsList.classList.contains('mobile-caps-open');
+      navCapsList.classList.toggle('mobile-caps-open', open);
+      mobileCapsChevron.classList.toggle('open', open);
+      mobileCapsToggle.setAttribute('aria-expanded', String(open));
+    });
+  }
 
   function scrollToId(id) {
     const el = document.getElementById(id);
