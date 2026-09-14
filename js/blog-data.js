@@ -3,6 +3,15 @@
 // title/excerpt/tag/date only exist in one place.
 window.FV_BLOG = [
   {
+    slug: 'cctv-installation-for-retail-malls',
+    tag: 'SURVEILLANCE',
+    date: 'SEP 2026',
+    readTime: '6 MIN READ',
+    title: 'CCTV installation for retail malls: what changes at that scale',
+    excerpt: 'A mall isn\'t a big shop — common-area vs tenant CCTV, ANPR parking, footfall-driven coverage and a real command room change the design from the ground up.',
+    img: 'cctv-installation-for-retail-malls.jpg'
+  },
+  {
     slug: 'gaming-pc-vs-workstation',
     tag: 'HARDWARE',
     date: 'AUG 2026',
