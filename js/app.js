@@ -1,4 +1,4 @@
-// Front Vision — site logic (intro splash, nav/routing, capability detail
+// Royal Engineering Consultancy — site logic (intro splash, nav/routing, capability detail
 // rendering, process accordion, animated counters, quote wizard).
 (() => {
   'use strict';
@@ -399,7 +399,7 @@
     const s = quoteState, f = s.form;
     s.submitting = true; s.error = ''; renderQuote();
     const data = new FormData();
-    data.append('_subject', `Front Vision BOQ enquiry: ${f.name} (${f.company})`);
+    data.append('_subject', `Royal Engineering Consultancy BOQ enquiry: ${f.name} (${f.company})`);
     data.append('name', f.name);
     data.append('company', f.company);
     data.append('phone', f.phone);
@@ -411,18 +411,18 @@
     data.append('location', f.location);
     data.append('boq_status', f.boq);
     data.append('notes', f.notes || 'None');
-    data.append('source', 'frontvision.co.in BOQ form');
+    data.append('source', 'recplindia.com BOQ form');
     try {
       const res = await fetch(QUOTE_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
       s.submitting = false;
       if (res.ok) {
         s.submitted = true; s.error = ''; s.ref = 'FV-2026-' + Math.floor(1000 + Math.random() * 9000);
       } else {
-        s.error = 'Something went wrong sending your enquiry — call/WhatsApp +91 98730-76300 or email sales@frontvision.co.in directly.';
+        s.error = 'Something went wrong sending your enquiry — call/WhatsApp 011-40575107 · +91 99997-44550 or email sales@recplindia.com directly.';
       }
     } catch {
       s.submitting = false;
-      s.error = 'Something went wrong sending your enquiry — call/WhatsApp +91 98730-76300 or email sales@frontvision.co.in directly.';
+      s.error = 'Something went wrong sending your enquiry — call/WhatsApp 011-40575107 · +91 99997-44550 or email sales@recplindia.com directly.';
     }
     renderQuote();
   }

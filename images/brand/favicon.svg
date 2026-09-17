@@ -1,9 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <style>
+    .center { fill: #0B0B0D; }
+    @media (prefers-color-scheme: dark) {
+      .center { fill: #F7F7F8; }
+    }
+  </style>
   <g fill="#E62E3E">
-    <path d="M64 64h150v34H98v116H64z"></path>
-    <path d="M448 64H298v34h116v116h34z"></path>
-    <path d="M64 448h150v-34H98V298H64z"></path>
-    <path d="M448 448H298v-34h116V298h34z"></path>
+    <path d="M111 111h196v34H145v162h-34z"/>
+    <path d="M401 401H205v-34h162V205h34z"/>
   </g>
-  <circle cx="256" cy="256" r="76" fill="#E62E3E"></circle>
+  <rect class="center" x="209" y="209" width="94" height="94"/>
 </svg>

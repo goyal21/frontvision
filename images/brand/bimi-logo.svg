@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 512 512" width="512" height="512">
-<title>Front Vision</title>
+<title>Royal Engineering Consultancy Pvt Ltd</title>
 <rect width="512" height="512" fill="#0B0B0D"/>
 <g fill="#E62E3E">
-<path d="M96 96H196V128H128V196H96Z"/>
-<path d="M416 96H316V128H384V196H416Z"/>
-<path d="M96 416H196V384H128V316H96Z"/>
-<path d="M416 416H316V384H384V316H416Z"/>
+<path d="M111 111h196v34H145v162h-34z"/>
+<path d="M401 401H205v-34h162V205h34z"/>
 </g>
-<circle cx="256" cy="256" r="76" fill="#F7F7F8"/>
+<rect x="209" y="209" width="94" height="94" fill="#F7F7F8"/>
 </svg>
