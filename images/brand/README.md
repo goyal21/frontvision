@@ -1,6 +1,6 @@
-# Front Vision — Favicon & Link Share Image
+# Royal Engineering Consultancy — Favicon & Link Share Image
 
-Place this folder at `C:\Front_Vision\Website\images\brand`.
+Place this folder at `C:\RECPL_Website\images\brand`.
 
 ## Files
 
@@ -13,15 +13,16 @@ Place this folder at `C:\Front_Vision\Website\images\brand`.
 | `apple-touch-icon.png` | 180×180 | iOS home-screen icon |
 | `icon-192.png` | 192×192 | Android / PWA manifest |
 | `icon-512.png` | 512×512 | PWA splash + maskable source |
-| `og-image.png` | 1200×630 | The image that appears when the site link is shared (WhatsApp, LinkedIn, X, Slack, iMessage, email previews) |
+| `og-image.jpg` | 1200×630 | The image that appears when the site link is shared (WhatsApp, LinkedIn, X, Slack, iMessage, email previews) |
+| `bimi-logo.svg` | 512×512 | Brand Indicator for Message Identification (BIMI) — shown next to authenticated emails in supporting inboxes |
 
-**Tab favicons are transparent.** The brackets and the focal dot are both Signal Red `#E62E3E` so the mark reads on light and dark browser chrome alike — a white dot would vanish on light tabs. Bracket weight is deliberately heavier at small sizes so 16px stays legible.
+**The mark is "Open Bracket"** — two offset brackets in Signal Red `#E62E3E` holding a single focal square, never a dot. Per brand guidelines the centre must always contrast against its background rather than repeat the red, so `favicon.svg` renders the centre square in Ink `#0B0B0D` by default and switches to Paper `#F7F7F8` under `prefers-color-scheme: dark` (the static PNG favicons use the light-mode Ink version, which reads correctly on the overwhelming majority of light browser chrome). Bracket weight is deliberately heavier at small sizes so 16px stays legible.
 
-The app icons (`apple-touch-icon`, `icon-192`, `icon-512`) stay **opaque** on Void Black `#0B0B0D` with the ice-white dot — iOS and Android composite home-screen icons onto their own background and require a filled square.
+The app icons (`apple-touch-icon`, `icon-192`, `icon-512`) and `bimi-logo.svg` stay **opaque** on Void Black `#0B0B0D` with a Paper `#F7F7F8` centre square — iOS, Android and BIMI all composite home-screen/inbox icons onto their own background and require a filled square.
 
 ## Head markup — paste into every page's `<head>`
 
-Replace `https://www.frontvision.in` with the live domain.
+Replace `https://www.recplindia.com` with the live domain.
 
 ```html
 <!-- Favicon -->
@@ -34,28 +35,28 @@ Replace `https://www.frontvision.in` with the live domain.
 
 <!-- Link preview (Open Graph — WhatsApp, LinkedIn, Facebook, Slack, iMessage) -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Front Vision">
-<meta property="og:url" content="https://www.frontvision.in/">
-<meta property="og:title" content="Front Vision — Surveillance, Networks & Computing">
+<meta property="og:site_name" content="Royal Engineering Consultancy">
+<meta property="og:url" content="https://www.recplindia.com/">
+<meta property="og:title" content="Royal Engineering Consultancy — Surveillance, Networks & Computing">
 <meta property="og:description" content="Surveillance, enterprise networking and custom computing, engineered as one system. Deployed across defence, government and industrial sites.">
-<meta property="og:image" content="https://www.frontvision.in/images/brand/og-image.png">
+<meta property="og:image" content="https://www.recplindia.com/images/brand/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Front Vision — surveillance, networks and computing, engineered as one system.">
+<meta property="og:image:alt" content="Royal Engineering Consultancy — surveillance, networks and computing, engineered as one system.">
 
 <!-- Link preview (X / Twitter) -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Front Vision — Surveillance, Networks & Computing">
+<meta name="twitter:title" content="Royal Engineering Consultancy — Surveillance, Networks & Computing">
 <meta name="twitter:description" content="Surveillance, enterprise networking and custom computing, engineered as one system.">
-<meta name="twitter:image" content="https://www.frontvision.in/images/brand/og-image.png">
+<meta name="twitter:image" content="https://www.recplindia.com/images/brand/og-image.jpg">
 ```
 
 ## site.webmanifest — create at the web root
 
 ```json
 {
-  "name": "Front Vision",
-  "short_name": "Front Vision",
+  "name": "Royal Engineering Consultancy",
+  "short_name": "Royal Engineering Consultancy",
   "icons": [
     { "src": "/images/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/images/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
